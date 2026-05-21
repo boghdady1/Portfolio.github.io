@@ -1,50 +1,3 @@
-/*
-=============================================
-HOW TO USE THIS PORTFOLIO
-=============================================
-
-1) PROFILE IMAGE
-Place your personal image here:
-/public/profile.png
-
-2) CV FILE
-Place your CV PDF here:
-/public/assets/cv.pdf
-
-3) PROJECT IMAGES
-Place project screenshots here:
-/public/projects/project1.png
-/public/projects/project2.png
-/public/projects/project3.png
-
-4) CERTIFICATES
-Place certificates images here:
-/public/certificates/cert1.png
-/public/certificates/cert2.png
-/public/certificates/cert3.png
-
-5) SOCIAL LINKS
-Replace all href="#" links with your real:
-- GitHub
-- TryHackMe
-- HackTheBox
-- LinkedIn
-
-6) INSTALLATION
-npm install
-npm run dev
-
-7) DEPLOYMENT
-Recommended:
-- Vercel
-- Netlify
-- GitHub Pages
-
-8) REQUIRED PACKAGES
-npm install framer-motion react-icons react-type-animation
-
-=============================================
-*/
 
 import { motion } from "framer-motion";
 import {
@@ -193,8 +146,6 @@ export default function CyberPortfolio() {
                 Contact Me
               </a>
             </div>
-          </div>
-
           </motion.div>
 
           <motion.div
