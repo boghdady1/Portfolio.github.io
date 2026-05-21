@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mostafa Boghdady | SOC Analyst</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(0,255,255,0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0,140,255,0.12), transparent 35%);
+      z-index: -1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.35);
+      border-bottom: 1px solid rgba(0,255,255,0.15);
+      z-index: 1000;
+    }
+
+    nav h1 {
+      color: cyan;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: cyan;
+    }
+
+    section {
+      padding: 120px 8%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      animation: fadeLeft 1.2s ease;
+    }
+
+    .hero-text h2 {
+      font-size: 70px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text span {
+      color: cyan;
+    }
+
+    .typing {
+      color: cyan;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      height: 40px;
+    }
+
+    .hero-text p {
+      color: #aaa;
+      line-height: 1.8;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .primary {
+      background: cyan;
+      color: black;
+    }
+
+    .primary:hover {
+      transform: translateY(-4px);
+    }
+
+    .secondary {
+      border: 1px solid cyan;
+      color: white;
+    }
+
+    .secondary:hover {
+      background: rgba(0,255,255,0.1);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      animation: fadeRight 1.2s ease;
+    }
+
+    .hero-image img {
+      width: 360px;
+      border-radius: 35px;
+      border: 2px solid rgba(0,255,255,0.3);
+      box-shadow: 0 0 50px rgba(0,255,255,0.15);
+    }
+
+    .title {
+      font-size: 42px;
+      margin-bottom: 50px;
+      color: cyan;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 25px;
+      padding: 25px;
+      transition: 0.4s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: cyan;
+      box-shadow: 0 0 25px rgba(0,255,255,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .terminal {
+      background: black;
+      border: 1px solid rgba(0,255,255,0.25);
+      border-radius: 25px;
+      padding: 30px;
+      font-family: monospace;
+      line-height: 2;
+      box-shadow: 0 0 30px rgba(0,255,255,0.08);
+    }
+
+    .green { color: #00ff9d; }
+    .red { color: #ff4d6d; }
+    .yellow { color: #ffd166; }
+    .cyan { color: cyan; }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #888;
+    }
+
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media(max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-text h2 {
+        font-size: 50px;
+      }
+
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+  =============================================
+  HOW TO ADD YOUR FILES
+  =============================================
+
+  1) PERSONAL IMAGE
+  Replace:
+  profile.png
+
+  2) CV FILE
+  Put your cv file here:
+  assets/cv.pdf
+
+  3) PROJECT IMAGES
+  Replace:
+  project1.png
+  project2.png
+  project3.png
+
+  4) CERTIFICATES
+  Replace:
+  cert1.png
+  cert2.png
+  cert3.png
+
+  5) SOCIAL LINKS
+  Replace all:
+  href="#"
+  with your real links.
+
+  =============================================
+  -->
+
+  <nav>
+    <h1>MOSTAFA</h1>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="typing" id="typing"></div>
+
+      <h2>
+        Mostafa <br>
+        <span>Boghdady</span>
+      </h2>
+
+      <p>
+        Entry-level SOC Analyst with hands-on experience in threat detection,
+        incident response, Linux administration, firewall configuration,
+        and network security monitoring.
+      </p>
+
+      <div class="btns">
+        <a href="assets/cv.pdf" class="btn primary">Download CV</a>
+        <a href="#contact" class="btn secondary">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="profile.png" alt="Mostafa">
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="title">About Me</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Professional Summary</h3>
+
+        <p>
+          Passionate SOC Analyst focused on security monitoring,
+          threat detection, and network defense.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Education</h3>
+
+        <p>
+          B.Sc. Computer Science
+          Higher Technological Institute
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Experience</h3>
+
+        <p>
+          IT Engineer at Click Solutions with experience in
+          networking, Linux systems, and troubleshooting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="title">Technical Skills</h2>
+
+    <div class="cards">
+      <div class="card">SIEM Monitoring</div>
+      <div class="card">Threat Detection</div>
+      <div class="card">Incident Response</div>
+      <div class="card">pfSense</div>
+      <div class="card">Wireshark</div>
+      <div class="card">Linux Administration</div>
+      <div class="card">ELK Stack</div>
+      <div class="card">Network Security</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="title">Projects</h2>
+
+    <div class="cards">
+      <div class="card">
+        <img src="project1.png" alt="project">
+
+        <h3>Automated SOC with SOAR</h3>
+
+        <p>
+          Built automated workflows using ELK, Shuffle, and pfSense.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="project2.png" alt="project">
+
+        <h3>Attack Simulation Lab</h3>
+
+        <p>
+          Simulated attacks using Kali Linux and analyzed security logs.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="project3.png" alt="project">
+
+        <h3>Firewall Security Lab</h3>
+
+        <p>
+          Secured enterprise environments using firewall rules and IDS/IPS.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2 class="title">Certificates</h2>
+
+    <div class="cards">
+      <div class="card">
+        <img src="cert1.png" alt="certificate">
+        <h3>Google Cybersecurity</h3>
+      </div>
+
+      <div class="card">
+        <img src="cert2.png" alt="certificate">
+        <h3>CCNA</h3>
+      </div>
+
+      <div class="card">
+        <img src="cert3.png" alt="certificate">
+        <h3>IBM Agile</h3>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="title">SOC Monitoring</h2>
+
+    <div class="terminal">
+      <div class="green">[INFO] Monitoring network traffic...</div>
+      <div class="yellow">[WARNING] Suspicious login detected...</div>
+      <div class="red">[BLOCKED] Firewall blocked malicious IP...</div>
+      <div class="cyan">[ACTIVE] SIEM alerts operational...</div>
+      <div>> root@mostafa-soc:~$</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="title">Contact Me</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Email</h3>
+        <p>mostafa10020038@gmail.com</p>
+      </div>
+
+      <div class="card">
+        <h3>LinkedIn</h3>
+        <p>
+          Replace this text with your LinkedIn URL
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>GitHub</h3>
+        <p>
+          Replace this text with your GitHub URL
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Mostafa Boghdady | SOC Analyst Portfolio
+  </footer>
+
+  <script>
+    const roles = [
+      "SOC Analyst",
+      "Threat Hunter",
+      "Blue Team Specialist",
+      "Network Security Engineer"
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const typing = document.getElementById('typing');
+
+    function typeEffect() {
+      const current = roles[roleIndex];
+
+      if (!deleting) {
+        typing.textContent = current.substring(0, charIndex++);
+
+        if (charIndex > current.length) {
+          deleting = true;
+          setTimeout(typeEffect, 1500);
+          return;
+        }
+      } else {
+        typing.textContent = current.substring(0, charIndex--);
+
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+
+      setTimeout(typeEffect, deleting ? 40 : 90);
+    }
+
+    typeEffect();
+  </script>
+</body>
+</html>
