@@ -3,304 +3,351 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Mostafa Boghdady | SOC Analyst</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #050816;
-      color: white;
-      overflow-x: hidden;
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+
       background:
-        radial-gradient(circle at top left, rgba(0,255,255,0.15), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0,140,255,0.12), transparent 35%);
-      z-index: -1;
+      radial-gradient(circle at top left,
+      rgba(0,255,255,0.15),
+      transparent 35%),
+
+      radial-gradient(circle at bottom right,
+      rgba(0,140,255,0.12),
+      transparent 35%);
+
+      z-index:-1;
     }
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(12px);
-      background: rgba(0,0,0,0.35);
-      border-bottom: 1px solid rgba(0,255,255,0.15);
-      z-index: 1000;
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:20px 8%;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      backdrop-filter:blur(12px);
+
+      background:rgba(0,0,0,0.35);
+
+      border-bottom:1px solid rgba(0,255,255,0.15);
+
+      box-shadow:0 0 20px rgba(0,255,255,0.08);
+
+      z-index:1000;
     }
 
-    nav h1 {
-      color: cyan;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 3px;
+    nav h1{
+      color:cyan;
+      font-family:'Orbitron',sans-serif;
+      letter-spacing:3px;
     }
 
-    nav ul {
-      display: flex;
-      gap: 25px;
-      list-style: none;
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
+    nav a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
     }
 
-    nav a:hover {
-      color: cyan;
+    nav a:hover{
+      color:cyan;
     }
 
-    section {
-      padding: 120px 8%;
+    section{
+      padding:120px 8%;
     }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      flex-wrap: wrap;
+    .hero{
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:60px;
+      flex-wrap:wrap;
     }
 
-    .hero-text {
-      flex: 1;
-      animation: fadeLeft 1.2s ease;
+    .hero-text{
+      flex:1;
+      animation:fadeLeft 1.2s ease;
     }
 
-    .hero-text h2 {
-      font-size: 70px;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    .hero-text h2{
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:20px;
     }
 
-    .hero-text span {
-      color: cyan;
+    .hero-text span{
+      color:cyan;
     }
 
-    .typing {
-      color: cyan;
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      height: 40px;
+    .typing{
+      color:cyan;
+      font-size:28px;
+      font-weight:600;
+      margin-bottom:20px;
+      height:40px;
     }
 
-    .hero-text p {
-      color: #aaa;
-      line-height: 1.8;
-      max-width: 650px;
-      margin-bottom: 35px;
+    .hero-text p{
+      color:#aaa;
+      line-height:1.9;
+      max-width:700px;
+      margin-bottom:35px;
     }
 
-    .btns {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+    .btns{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
     }
 
-    .btn {
-      padding: 14px 28px;
-      border-radius: 14px;
-      text-decoration: none;
-      transition: 0.3s;
-      font-weight: 600;
+    .btn{
+      padding:14px 30px;
+      border-radius:14px;
+      text-decoration:none;
+      transition:0.4s;
+      font-weight:600;
     }
 
-    .primary {
-      background: cyan;
-      color: black;
+    .primary{
+      background:cyan;
+      color:black;
+      box-shadow:0 0 25px rgba(0,255,255,0.25);
     }
 
-    .primary:hover {
-      transform: translateY(-4px);
+    .primary:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 40px rgba(0,255,255,0.4);
     }
 
-    .secondary {
-      border: 1px solid cyan;
-      color: white;
+    .secondary{
+      border:1px solid cyan;
+      color:white;
     }
 
-    .secondary:hover {
-      background: rgba(0,255,255,0.1);
+    .secondary:hover{
+      background:rgba(0,255,255,0.1);
+      transform:translateY(-5px);
     }
 
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      animation: fadeRight 1.2s ease;
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      animation:fadeRight 1.2s ease;
     }
 
-    .hero-image img {
-      width: 360px;
-      border-radius: 35px;
-      border: 2px solid rgba(0,255,255,0.3);
-      box-shadow: 0 0 50px rgba(0,255,255,0.15);
+    .hero-image img{
+      width:360px;
+      border-radius:35px;
+
+      border:2px solid rgba(0,255,255,0.3);
+
+      box-shadow:
+      0 0 50px rgba(0,255,255,0.15),
+      0 0 90px rgba(0,255,255,0.08);
+
+      transition:0.5s;
+
+      animation:floating 4s ease-in-out infinite;
     }
 
-    .title {
-      font-size: 42px;
-      margin-bottom: 50px;
-      color: cyan;
-      font-family: 'Orbitron', sans-serif;
+    .hero-image img:hover{
+      transform:scale(1.03);
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+    .title{
+      font-size:42px;
+      margin-bottom:50px;
+      color:cyan;
+      font-family:'Orbitron',sans-serif;
     }
 
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 25px;
-      padding: 25px;
-      transition: 0.4s;
-      backdrop-filter: blur(10px);
+    .cards{
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
+
+      gap:25px;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: cyan;
-      box-shadow: 0 0 25px rgba(0,255,255,0.15);
+    .card{
+      background:rgba(255,255,255,0.04);
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      border-radius:25px;
+
+      padding:25px;
+
+      transition:0.4s;
+
+      backdrop-filter:blur(10px);
     }
 
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 18px;
-      margin-bottom: 20px;
+    .card:hover{
+      transform:translateY(-10px) scale(1.02);
+
+      border-color:cyan;
+
+      box-shadow:
+      0 0 25px rgba(0,255,255,0.15),
+      0 0 60px rgba(0,255,255,0.08);
     }
 
-    .card h3 {
-      margin-bottom: 15px;
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+
+      border-radius:18px;
+
+      margin-bottom:20px;
     }
 
-    .card p {
-      color: #aaa;
-      line-height: 1.7;
-      margin-bottom: 15px;
+    .card h3{
+      margin-bottom:15px;
     }
 
-    .terminal {
-      background: black;
-      border: 1px solid rgba(0,255,255,0.25);
-      border-radius: 25px;
-      padding: 30px;
-      font-family: monospace;
-      line-height: 2;
-      box-shadow: 0 0 30px rgba(0,255,255,0.08);
+    .card p{
+      color:#aaa;
+      line-height:1.8;
     }
 
-    .green { color: #00ff9d; }
-    .red { color: #ff4d6d; }
-    .yellow { color: #ffd166; }
-    .cyan { color: cyan; }
+    .terminal{
+      background:black;
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: #888;
+      border:1px solid rgba(0,255,255,0.25);
+
+      border-radius:25px;
+
+      padding:30px;
+
+      font-family:monospace;
+
+      line-height:2;
+
+      box-shadow:0 0 30px rgba(0,255,255,0.08);
     }
 
-    @keyframes fadeLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-60px);
+    .green{ color:#00ff9d; }
+    .red{ color:#ff4d6d; }
+    .yellow{ color:#ffd166; }
+    .cyan{ color:cyan; }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#888;
+    }
+
+    @keyframes fadeLeft{
+      from{
+        opacity:0;
+        transform:translateX(-60px);
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+
+      to{
+        opacity:1;
+        transform:translateX(0);
       }
     }
 
-    @keyframes fadeRight {
-      from {
-        opacity: 0;
-        transform: translateX(60px);
+    @keyframes fadeRight{
+      from{
+        opacity:0;
+        transform:translateX(60px);
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+
+      to{
+        opacity:1;
+        transform:translateX(0);
       }
     }
 
-    @media(max-width: 900px) {
-      .hero {
-        flex-direction: column-reverse;
-        text-align: center;
+    @keyframes floating{
+      0%{
+        transform:translateY(0px);
       }
 
-      .hero-text h2 {
-        font-size: 50px;
+      50%{
+        transform:translateY(-15px);
       }
 
-      nav ul {
-        display: none;
+      100%{
+        transform:translateY(0px);
       }
     }
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h2{
+        font-size:50px;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .hero-image img{
+        width:280px;
+      }
+
+    }
+
   </style>
+
 </head>
+
 <body>
 
-  <!--
-  =============================================
-  HOW TO ADD YOUR FILES
-  =============================================
-
-  1) PERSONAL IMAGE
-  Replace:
-  <img src="Assets/Profile_Photo/1768458027726.png">  
-
-  2) CV FILE
-  Put your cv file here:
-  assets/cv.pdf
-
-  3) PROJECT IMAGES
-  Replace:
-  project1.png
-  project2.png
-  project3.png
-
-  4) CERTIFICATES
-  Replace:
-  cert1.png
-  cert2.png
-  cert3.png
-
-  5) SOCIAL LINKS
-  Replace all:
-  href="#"
-  with your real links.
-
-  =============================================
-  -->
-
   <nav>
+
     <h1>MOSTAFA</h1>
 
     <ul>
@@ -310,10 +357,15 @@
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
   </nav>
 
+  <!-- HERO -->
+
   <section class="hero">
+
     <div class="hero-text">
+
       <div class="typing" id="typing"></div>
 
       <h2>
@@ -322,63 +374,118 @@
       </h2>
 
       <p>
-        Entry-level SOC Analyst with hands-on experience in threat detection, incident response, Linux administration, firewall configuration, and network security monitoring. Specialized Diploma in Cybersecurity at the Egyptian Military Academy and DiGiLiANS Cyber Security Program trainee.
+        Entry-level SOC Analyst with hands-on experience in threat detection,
+        incident response, Linux administration, firewall configuration,
+        and network security monitoring.
+
+        Specialized Diploma in Cybersecurity at the Egyptian Military Academy
+        and DiGiLiANS Cyber Security Program trainee.
       </p>
 
       <div class="btns">
-        <a href="assets/cv.pdf" class="btn primary">Download CV</a>
-        <a href="https://wa.me/201013421811" target="_blank" class="btn secondary">Contact Me</a>
+
+        <a href="Assets/cv.pdf"
+        class="btn primary">
+
+        Download CV
+
+        </a>
+
+        <a href="https://wa.me/201013421811"
+        target="_blank"
+        class="btn secondary">
+
+        Contact Me
+
+        </a>
+
       </div>
+
     </div>
 
     <div class="hero-image">
-      <img src="Assets/Profile_Photo/1768458027726.png" alt="Mostafa">    
+
+      <img
+      src="Assets/Profile_Photo/1768458027726.png"
+      alt="Mostafa Boghdady">
+
     </div>
+
   </section>
 
+  <!-- ABOUT -->
+
   <section id="about">
+
     <h2 class="title">About Me</h2>
 
     <div class="cards">
+
       <div class="card">
+
         <h3>Professional Summary</h3>
 
         <p>
           Passionate SOC Analyst focused on security monitoring,
-          threat detection, and network defense.
+          threat detection, network defense, and Blue Team operations.
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>Education</h3>
 
         <p>
-          B.Sc. Computer Science<br>
-          Higher Technological Institute<br><br>
 
-          Specialized Diploma in Cybersecurity<br>
-          Egyptian Military Academy<br><br>
+          B.Sc. Computer Science
+          <br>
+          Higher Technological Institute
+
+          <br><br>
+
+          Specialized Diploma in Cybersecurity
+          <br>
+          Egyptian Military Academy
+
+          <br><br>
 
           DiGiLiANS Cyber Security Program
+
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>Experience</h3>
 
         <p>
-          IT Engineer at Click Solutions with experience in networking, Linux systems, troubleshooting, and security monitoring.
+
+          IT Engineer at Click Solutions with experience in networking,
+          Linux systems, troubleshooting, and security monitoring.
+
           <br><br>
-          Cybersecurity trainee at DiGiLiANS with hands-on SOC and Blue Team labs.
+
+          Cybersecurity trainee at DiGiLiANS with hands-on SOC
+          and Blue Team labs.
+
         </p>
+
       </div>
+
     </div>
+
   </section>
 
+  <!-- SKILLS -->
+
   <section id="skills">
+
     <h2 class="title">Technical Skills</h2>
 
     <div class="cards">
+
       <div class="card">SIEM Monitoring</div>
       <div class="card">Threat Detection</div>
       <div class="card">Incident Response</div>
@@ -387,114 +494,233 @@
       <div class="card">Linux Administration</div>
       <div class="card">ELK Stack</div>
       <div class="card">Network Security</div>
+      <div class="card">SOC Operations</div>
+      <div class="card">Blue Teaming</div>
+
     </div>
+
   </section>
 
+  <!-- PROJECTS -->
+
   <section id="projects">
+
     <h2 class="title">Projects</h2>
 
     <div class="cards">
+
       <div class="card">
-        <img src="project1.png" alt="project">
+
+        <img src="Assets/Projects/project1.png" alt="project">
 
         <h3>Automated SOC with SOAR</h3>
 
         <p>
           Built automated workflows using ELK, Shuffle, and pfSense.
         </p>
+
       </div>
 
       <div class="card">
-        <img src="project2.png" alt="project">
+
+        <img src="Assets/Projects/project2.png" alt="project">
 
         <h3>Attack Simulation Lab</h3>
 
         <p>
           Simulated attacks using Kali Linux and analyzed security logs.
         </p>
+
       </div>
 
       <div class="card">
-        <img src="project3.png" alt="project">
+
+        <img src="Assets/Projects/project3.png" alt="project">
 
         <h3>Firewall Security Lab</h3>
 
         <p>
           Secured enterprise environments using firewall rules and IDS/IPS.
         </p>
+
       </div>
+
     </div>
+
   </section>
 
+  <!-- CERTIFICATES -->
+
   <section id="certificates">
+
     <h2 class="title">Certificates</h2>
 
     <div class="cards">
+
       <div class="card">
-        <img src="cert1.png" alt="certificate">
+        <img src="Assets/Certificates/Cert1.png">
         <h3>Google Cybersecurity</h3>
       </div>
 
       <div class="card">
-        <img src="cert2.png" alt="certificate">
-        <h3>CCNA</h3>
+        <img src="Assets/Certificates/Cert2.png">
+        <h3>Google Cybersecurity Badge</h3>
       </div>
 
       <div class="card">
-        <img src="cert3.png" alt="certificate">
-        <h3>IBM Agile</h3>
+        <img src="Assets/Certificates/Cert3.png">
+        <h3>Python for Cybersecurity</h3>
       </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert4.png">
+        <h3>IBM Agile Explorer</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert5.png">
+        <h3>Linux Essentials</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert6.png">
+        <h3>Network Security</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert7.png">
+        <h3>Threat Intelligence</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert8.png">
+        <h3>SIEM Fundamentals</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert9.png">
+        <h3>Blue Team Operations</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert10.png">
+        <h3>Incident Response</h3>
+      </div>
+
+      <div class="card">
+        <img src="Assets/Certificates/Cert11.png">
+        <h3>SOC Analyst</h3>
+      </div>
+
     </div>
+
   </section>
 
+  <!-- TERMINAL -->
+
   <section>
+
     <h2 class="title">SOC Monitoring</h2>
 
     <div class="terminal">
-      <div class="green">[INFO] Monitoring network traffic...</div>
-      <div class="yellow">[WARNING] Suspicious login detected...</div>
-      <div class="red">[BLOCKED] Firewall blocked malicious IP...</div>
-      <div class="cyan">[ACTIVE] SIEM alerts operational...</div>
-      <div>> root@mostafa-soc:~$</div>
+
+      <div class="green">
+        [INFO] Monitoring network traffic...
+      </div>
+
+      <div class="yellow">
+        [WARNING] Suspicious login detected...
+      </div>
+
+      <div class="red">
+        [BLOCKED] Firewall blocked malicious IP...
+      </div>
+
+      <div class="cyan">
+        [ACTIVE] SIEM alerts operational...
+      </div>
+
+      <div>
+        > root@mostafa-soc:~$
+      </div>
+
     </div>
+
   </section>
 
+  <!-- CONTACT -->
+
   <section id="contact">
+
     <h2 class="title">Contact Me</h2>
 
     <div class="cards">
+
       <div class="card">
+
         <h3>Email</h3>
+
         <p>
-          <a href="mailto:mostafa10020038@gmail.com" style="color: cyan; text-decoration:none;">
-            mostafa10020038@gmail.com
+
+          <a href="mailto:mostafa10020038@gmail.com"
+          style="color:cyan;text-decoration:none;">
+
+          mostafa10020038@gmail.com
+
           </a>
+
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>LinkedIn</h3>
+
         <p>
-          Replace this text with your LinkedIn URL
+
+          <a href="#"
+          target="_blank"
+          style="color:cyan;text-decoration:none;">
+
+          View LinkedIn Profile
+
+          </a>
+
         </p>
+
       </div>
 
       <div class="card">
+
         <h3>WhatsApp</h3>
+
         <p>
-          <a href="https://wa.me/201013421811" target="_blank" style="color: cyan; text-decoration:none;">
-            Chat on WhatsApp
+
+          <a href="https://wa.me/201013421811"
+          target="_blank"
+          style="color:cyan;text-decoration:none;">
+
+          Chat on WhatsApp
+
           </a>
+
         </p>
+
       </div>
+
     </div>
+
   </section>
 
   <footer>
+
     © 2026 Mostafa Boghdady | SOC Analyst Portfolio
+
   </footer>
 
   <script>
+
     const roles = [
       "SOC Analyst",
       "Threat Hunter",
@@ -508,30 +734,47 @@
 
     const typing = document.getElementById('typing');
 
-    function typeEffect() {
+    function typeEffect(){
+
       const current = roles[roleIndex];
 
-      if (!deleting) {
-        typing.textContent = current.substring(0, charIndex++);
+      if(!deleting){
 
-        if (charIndex > current.length) {
+        typing.textContent =
+        current.substring(0,charIndex++);
+
+        if(charIndex > current.length){
+
           deleting = true;
-          setTimeout(typeEffect, 1500);
+
+          setTimeout(typeEffect,1500);
+
           return;
         }
-      } else {
-        typing.textContent = current.substring(0, charIndex--);
 
-        if (charIndex === 0) {
+      } else {
+
+        typing.textContent =
+        current.substring(0,charIndex--);
+
+        if(charIndex === 0){
+
           deleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
+
+          roleIndex =
+          (roleIndex + 1) % roles.length;
         }
+
       }
 
-      setTimeout(typeEffect, deleting ? 40 : 90);
+      setTimeout(typeEffect,
+      deleting ? 40 : 90);
+
     }
 
     typeEffect();
+
   </script>
+
 </body>
 </html>
