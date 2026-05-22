@@ -1,354 +1,522 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Mostafa Boghdady | SOC Analyst</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#050816;
-      color:white;
-      overflow-x:hidden;
+    :root {
+      --primary: #00ffff;
+      --secondary: #008cff;
+      --dark: #050816;
+      --card: rgba(255, 255, 255, 0.04);
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: white;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
 
       background:
-      radial-gradient(circle at top left,
-      rgba(0,255,255,0.15),
-      transparent 35%),
+        radial-gradient(circle at top left, rgba(0, 255, 255, 0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0, 140, 255, 0.12), transparent 35%);
 
-      radial-gradient(circle at bottom right,
-      rgba(0,140,255,0.12),
-      transparent 35%);
-
-      z-index:-1;
+      z-index: -1;
     }
 
-    nav{
-      position:fixed;
-      top:0;
-      width:100%;
-      padding:20px 8%;
+    /* =========================
+       CUSTOM CURSOR
+    ========================= */
 
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-
-      backdrop-filter:blur(12px);
-
-      background:rgba(0,0,0,0.35);
-
-      border-bottom:1px solid rgba(0,255,255,0.15);
-
-      box-shadow:0 0 20px rgba(0,255,255,0.08);
-
-      z-index:1000;
+    .cursor {
+      width: 18px;
+      height: 18px;
+      border: 2px solid cyan;
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 999999;
+      transition: 0.15s;
+      box-shadow:
+        0 0 15px cyan,
+        0 0 35px rgba(0, 255, 255, 0.5);
     }
 
-    nav h1{
-      color:cyan;
-      font-family:'Orbitron',sans-serif;
-      letter-spacing:3px;
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: cyan;
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 999999;
+      box-shadow: 0 0 15px cyan;
     }
 
-    nav ul{
-      display:flex;
-      gap:25px;
-      list-style:none;
+    .cursor-hover {
+      width: 55px !important;
+      height: 55px !important;
+      background: rgba(0, 255, 255, 0.08);
     }
 
-    nav a{
-      color:white;
-      text-decoration:none;
-      transition:0.3s;
-      font-weight:500;
+    /* =========================
+       SCROLLBAR
+    ========================= */
+
+    ::-webkit-scrollbar {
+      width: 12px;
     }
 
-    nav a:hover{
-      color:cyan;
+    ::-webkit-scrollbar-track {
+      background: #050816;
     }
 
-    section{
-      padding:120px 8%;
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, cyan, #008cff);
+      border-radius: 20px;
+      border: 2px solid #050816;
+      box-shadow: 0 0 15px cyan;
     }
 
-    .hero{
-      min-height:100vh;
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.35);
 
-      gap:60px;
-      flex-wrap:wrap;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+
+      z-index: 1000;
     }
 
-    .hero-text{
-      flex:1;
-      animation:fadeLeft 1.2s ease;
+    nav h1 {
+      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      font-size: 28px;
     }
 
-    .hero-text h2{
-      font-size:72px;
-      line-height:1.1;
-      margin-bottom:20px;
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
     }
 
-    .hero-text span{
-      color:cyan;
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 15px;
     }
 
-    .typing{
-      color:cyan;
-      font-size:28px;
-      font-weight:600;
-      margin-bottom:20px;
-      height:40px;
+    nav a:hover {
+      color: var(--primary);
     }
 
-    .hero-text p{
-      color:#aaa;
-      line-height:1.9;
-      max-width:700px;
-      margin-bottom:35px;
+    section {
+      padding: 120px 8%;
     }
 
-    .btns{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 70px;
+      flex-wrap: wrap;
     }
 
-    .btn{
-      padding:14px 30px;
-      border-radius:14px;
-      text-decoration:none;
-      transition:0.4s;
-      font-weight:600;
+    .hero-text {
+      flex: 1;
     }
 
-    .primary{
-      background:cyan;
-      color:black;
-      box-shadow:0 0 25px rgba(0,255,255,0.25);
+    .typing {
+      color: var(--primary);
+      font-size: 25px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      height: 40px;
     }
 
-    .primary:hover{
-      transform:translateY(-5px);
-      box-shadow:0 0 40px rgba(0,255,255,0.4);
+    .hero h2 {
+      font-size: 75px;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
-    .secondary{
-      border:1px solid cyan;
-      color:white;
+    .hero span {
+      color: var(--primary);
     }
 
-    .secondary:hover{
-      background:rgba(0,255,255,0.1);
-      transform:translateY(-5px);
+    .hero p {
+      color: #b7b7b7;
+      line-height: 1.9;
+      max-width: 650px;
+      margin-bottom: 35px;
     }
 
-    .hero-image{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      animation:fadeRight 1.2s ease;
+    .btns {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    .hero-image img{
-      width:360px;
-      border-radius:35px;
+    .btn {
+      position: relative;
+      overflow: hidden;
 
-      border:2px solid rgba(0,255,255,0.3);
+      padding: 14px 28px;
+      border-radius: 14px;
+
+      text-decoration: none;
+      font-weight: 600;
+
+      transition: 0.3s;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(120deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent);
+
+      transform: translateX(-100%);
+    }
+
+    .btn:hover::before {
+      transition: 0.8s;
+      transform: translateX(100%);
+    }
+
+    .primary {
+      background: var(--primary);
+      color: black;
+    }
+
+    .secondary {
+      border: 1px solid cyan;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      width: 360px;
+      border-radius: 35px;
+
+      border: 2px solid rgba(0, 255, 255, 0.3);
 
       box-shadow:
-      0 0 50px rgba(0,255,255,0.15),
-      0 0 90px rgba(0,255,255,0.08);
+        0 0 40px rgba(0, 255, 255, 0.15);
 
-      transition:0.5s;
-
-      animation:floating 4s ease-in-out infinite;
+      transition: 0.5s;
     }
 
-    .hero-image img:hover{
-      transform:scale(1.03);
+    .hero-image img:hover {
+      transform: scale(1.04);
+      box-shadow:
+        0 0 40px cyan,
+        0 0 80px rgba(0, 255, 255, 0.25);
     }
 
-    .title{
-      font-size:42px;
-      margin-bottom:50px;
-      color:cyan;
-      font-family:'Orbitron',sans-serif;
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
     }
 
-    .cards{
-      display:grid;
+    /* =========================
+       TITLES
+    ========================= */
 
-      grid-template-columns:
-      repeat(auto-fit,minmax(260px,1fr));
-
-      gap:25px;
+    .title {
+      font-size: 45px;
+      margin-bottom: 50px;
+      color: var(--primary);
+      font-family: 'Orbitron', sans-serif;
     }
 
-    .card{
-      background:rgba(255,255,255,0.04);
+    /* =========================
+       CARDS
+    ========================= */
 
-      border:1px solid rgba(255,255,255,0.08);
-
-      border-radius:25px;
-
-      padding:25px;
-
-      transition:0.4s;
-
-      backdrop-filter:blur(10px);
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
     }
 
-    .card:hover{
-      transform:translateY(-10px) scale(1.02);
+    .card {
+      background: var(--card);
 
-      border-color:cyan;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 25px;
+
+      padding: 25px;
+
+      transition: 0.4s;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+
+      border-color: cyan;
 
       box-shadow:
-      0 0 25px rgba(0,255,255,0.15),
-      0 0 60px rgba(0,255,255,0.08);
+        0 0 25px rgba(0, 255, 255, 0.15),
+        0 0 60px rgba(0, 255, 255, 0.08);
     }
 
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
+    .card img {
+      width: 100%;
+      height: 220px;
 
-      border-radius:18px;
+      object-fit: cover;
 
-      margin-bottom:20px;
+      border-radius: 18px;
+
+      margin-bottom: 20px;
     }
 
-    .card h3{
-      margin-bottom:15px;
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 22px;
     }
 
-    .card p{
-      color:#aaa;
-      line-height:1.8;
+    .card p {
+      color: #b6b6b6;
+      line-height: 1.8;
     }
 
-    .terminal{
-      background:black;
+    /* =========================
+       SKILLS
+    ========================= */
 
-      border:1px solid rgba(0,255,255,0.25);
-
-      border-radius:25px;
-
-      padding:30px;
-
-      font-family:monospace;
-
-      line-height:2;
-
-      box-shadow:0 0 30px rgba(0,255,255,0.08);
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .green{ color:#00ff9d; }
-    .red{ color:#ff4d6d; }
-    .yellow{ color:#ffd166; }
-    .cyan{ color:cyan; }
+    .skill {
+      padding: 14px 20px;
 
-    footer{
-      text-align:center;
-      padding:40px;
-      border-top:1px solid rgba(255,255,255,0.08);
-      color:#888;
+      border-radius: 14px;
+
+      background: rgba(255, 255, 255, 0.05);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      transition: 0.3s;
     }
 
-    @keyframes fadeLeft{
-      from{
-        opacity:0;
-        transform:translateX(-60px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateX(0);
-      }
+    .skill:hover {
+      background: rgba(0, 255, 255, 0.08);
+      transform: translateY(-5px);
+      border-color: cyan;
     }
 
-    @keyframes fadeRight{
-      from{
-        opacity:0;
-        transform:translateX(60px);
-      }
+    /* =========================
+       TERMINAL
+    ========================= */
 
-      to{
-        opacity:1;
-        transform:translateX(0);
-      }
+    .terminal {
+      background: black;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+
+      border-radius: 25px;
+
+      padding: 30px;
+
+      font-family: monospace;
+
+      line-height: 2;
+
+      box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.08);
     }
 
-    @keyframes floating{
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-15px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
+    .green {
+      color: #00ff9d;
     }
 
-    @media(max-width:900px){
-
-      .hero{
-        flex-direction:column-reverse;
-        text-align:center;
-      }
-
-      .hero-text h2{
-        font-size:50px;
-      }
-
-      nav ul{
-        display:none;
-      }
-
-      .hero-image img{
-        width:280px;
-      }
-
+    .yellow {
+      color: #ffd166;
     }
 
+    .red {
+      color: #ff4d6d;
+    }
+
+    .cyan {
+      color: cyan;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.04);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 25px;
+
+      padding: 35px;
+
+      text-align: center;
+
+      transition: 0.4s;
+
+      text-decoration: none;
+      color: white;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+
+      border-color: cyan;
+
+      box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.15);
+    }
+
+    .contact-card i {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: cyan;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: #aaa;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #888;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:950px) {
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 50px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero-image img {
+        width: 280px;
+      }
+    }
   </style>
-
 </head>
 
 <body>
 
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- NAVBAR -->
   <nav>
 
-    <h1>Mostafa Boghdady</h1>
+    <h1>MOSTAFA</h1>
 
     <ul>
       <li><a href="#about">About</a></li>
@@ -361,7 +529,6 @@
   </nav>
 
   <!-- HERO -->
-
   <section class="hero">
 
     <div class="hero-text">
@@ -374,29 +541,20 @@
       </h2>
 
       <p>
-        Entry-level SOC Analyst with hands-on experience in threat detection,
-        incident response, Linux administration, firewall configuration,
-        and network security monitoring.
-
+        SOC Analyst passionate about cybersecurity, threat detection,
+        incident response, network security, and blue team operations.
         Specialized Diploma in Cybersecurity at the Egyptian Military Academy
-        and DiGiLiANS Cyber Security Program trainee.
+        and trainee at DiGiLiANS Cyber Security Program.
       </p>
 
       <div class="btns">
 
-        <a href="Assets/cv.pdf"
-        class="btn primary">
-
-        Download CV
-
+        <a href="Assets/Profile_Photo/CV_Mostafa_Boghdady.docx" class="btn primary">
+          Download CV
         </a>
 
-        <a href="https://wa.me/201013421811"
-        target="_blank"
-        class="btn secondary">
-
-        Contact Me
-
+        <a href="https://wa.me/201013421811" target="_blank" class="btn secondary">
+          Contact Me
         </a>
 
       </div>
@@ -404,17 +562,12 @@
     </div>
 
     <div class="hero-image">
-
-      <img
-      src="Assets/Profile_Photo/1768458027726.png"
-      alt="Mostafa Boghdady">
-
+      <img src="Assets/Profile_Photo/1768458027726.png" alt="Mostafa">
     </div>
 
   </section>
 
   <!-- ABOUT -->
-
   <section id="about">
 
     <h2 class="title">About Me</h2>
@@ -422,87 +575,105 @@
     <div class="cards">
 
       <div class="card">
-
         <h3>Professional Summary</h3>
 
         <p>
           Passionate SOC Analyst focused on security monitoring,
-          threat detection, network defense, and Blue Team operations.
+          threat hunting, incident response, and enterprise defense.
         </p>
-
       </div>
 
       <div class="card">
-
         <h3>Education</h3>
 
         <p>
+          B.Sc. Computer Science<br><br>
 
-          B.Sc. Computer Science
-          <br>
-          Higher Technological Institute
-
-          <br><br>
-
-          Specialized Diploma in Cybersecurity
-          <br>
-          Egyptian Military Academy
-
-          <br><br>
+          Specialized Diploma in Cybersecurity<br>
+          Egyptian Military Academy<br><br>
 
           DiGiLiANS Cyber Security Program
-
         </p>
-
       </div>
 
       <div class="card">
-
         <h3>Experience</h3>
 
         <p>
-
-          IT Engineer at Click Solutions with experience in networking,
-          Linux systems, troubleshooting, and security monitoring.
-
-          <br><br>
-
-          Cybersecurity trainee at DiGiLiANS with hands-on SOC
-          and Blue Team labs.
-
+          IT Engineer at Click Solutions with hands-on experience
+          in networking, Linux systems, troubleshooting,
+          SIEM monitoring, and security operations.
         </p>
-
       </div>
 
     </div>
 
   </section>
 
-  <!-- SKILLS -->
-
+  <!-- TECHNICAL SKILLS -->
   <section id="skills">
 
     <h2 class="title">Technical Skills</h2>
 
+    <div class="skills-list">
+
+      <div class="skill">SIEM Monitoring</div>
+      <div class="skill">Threat Detection</div>
+      <div class="skill">Incident Response</div>
+      <div class="skill">Wireshark</div>
+      <div class="skill">ELK Stack</div>
+      <div class="skill">Linux Administration</div>
+      <div class="skill">Network Security</div>
+      <div class="skill">pfSense</div>
+      <div class="skill">SOC Operations</div>
+      <div class="skill">Blue Teaming</div>
+      <div class="skill">Firewall Configuration</div>
+      <div class="skill">Kali Linux</div>
+
+    </div>
+
+  </section>
+
+  <!-- SOFT SKILLS -->
+  <section>
+
+    <h2 class="title">Soft Skills</h2>
+
+    <div class="skills-list">
+
+      <div class="skill">Leadership</div>
+      <div class="skill">Teamwork</div>
+      <div class="skill">Problem Solving</div>
+      <div class="skill">Communication</div>
+      <div class="skill">Time Management</div>
+      <div class="skill">Critical Thinking</div>
+
+    </div>
+
+  </section>
+
+  <!-- VOLUNTEERING -->
+  <section>
+
+    <h2 class="title">Volunteering</h2>
+
     <div class="cards">
 
-      <div class="card">SIEM Monitoring</div>
-      <div class="card">Threat Detection</div>
-      <div class="card">Incident Response</div>
-      <div class="card">pfSense</div>
-      <div class="card">Wireshark</div>
-      <div class="card">Linux Administration</div>
-      <div class="card">ELK Stack</div>
-      <div class="card">Network Security</div>
-      <div class="card">SOC Operations</div>
-      <div class="card">Blue Teaming</div>
+      <div class="card">
+        <h3>DiGiLiANS Cyber Security Program</h3>
+
+        <p>
+          Participated in hands-on cybersecurity labs,
+          SOC simulations, blue team exercises,
+          and practical security monitoring activities.
+        </p>
+      </div>
 
     </div>
 
   </section>
 
   <!-- PROJECTS -->
-
   <section id="projects">
 
     <h2 class="title">Projects</h2>
@@ -510,39 +681,37 @@
     <div class="cards">
 
       <div class="card">
-
         <img src="Assets/Projects/project1.png" alt="project">
 
-        <h3>Automated SOC with SOAR</h3>
+        <h3>Automated SOC Lab</h3>
 
         <p>
-          Built automated workflows using ELK, Shuffle, and pfSense.
+          Built automated workflows using ELK Stack,
+          pfSense, and security monitoring pipelines.
         </p>
-
       </div>
 
       <div class="card">
-
         <img src="Assets/Projects/project2.png" alt="project">
 
-        <h3>Attack Simulation Lab</h3>
+        <h3>Attack Simulation</h3>
 
         <p>
-          Simulated attacks using Kali Linux and analyzed security logs.
+          Simulated attacks using Kali Linux
+          and analyzed logs inside SOC environments.
         </p>
-
       </div>
 
       <div class="card">
-
         <img src="Assets/Projects/project3.png" alt="project">
 
         <h3>Firewall Security Lab</h3>
 
         <p>
-          Secured enterprise environments using firewall rules and IDS/IPS.
+          Configured firewall rules,
+          IDS/IPS systems,
+          and enterprise network segmentation.
         </p>
-
       </div>
 
     </div>
@@ -550,7 +719,6 @@
   </section>
 
   <!-- CERTIFICATES -->
-
   <section id="certificates">
 
     <h2 class="title">Certificates</h2>
@@ -558,68 +726,58 @@
     <div class="cards">
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert1.png">
-        <h3>Google Cybersecurity</h3>
+        <img src="Assets/Cretificates/Cert1.png" alt="">
+        <h3>Certificate 1</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Badge.png">
-        <h3>Google Cybersecurity Badge</h3>
+        <img src="Assets/Cretificates/Cert2.png" alt="">
+        <h3>Certificate 2</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert2.png">
-        <h3>Python for Cybersecurity</h3>
+        <img src="Assets/Cretificates/Cert3.png" alt="">
+        <h3>Certificate 3</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert9.png">
-        <h3>IBM Agile Explorer</h3>
+        <img src="Assets/Cretificates/Cert4.png" alt="">
+        <h3>Certificate 4</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert3.png">
-        <h3>Linux Essentials</h3>
+        <img src="Assets/Cretificates/Cert5.png" alt="">
+        <h3>Certificate 5</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert4.png">
-        <h3>Network Security</h3>
+        <img src="Assets/Cretificates/Cert6.png" alt="">
+        <h3>Certificate 6</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert5.png">
-        <h3>Threat Intelligence</h3>
+        <img src="Assets/Cretificates/Cert7.png" alt="">
+        <h3>Certificate 7</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert6.png">
-        <h3>SIEM Fundamentals</h3>
+        <img src="Assets/Cretificates/Cert8.png" alt="">
+        <h3>Certificate 8</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert7.png">
-        <h3>Blue Team Operations</h3>
+        <img src="Assets/Cretificates/Cert9.png" alt="">
+        <h3>Certificate 9</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert8.png">
-        <h3>Incident Response</h3>
+        <img src="Assets/Cretificates/Cert10.png" alt="">
+        <h3>Certificate 10</h3>
       </div>
 
       <div class="card">
-        <img src="Assets/Cretificates/Cert9.png">
-        <h3>SOC Analyst</h3>
-      </div>
-
-       <div class="card">
-        <img src="Assets/Cretificates/Cert10.png">
-        <h3>SOC Analyst</h3>
-      </div>
-
-       <div class="card">
-        <img src="Assets/Cretificates/Cert11.png">
-        <h3>SOC Analyst</h3>
+        <img src="Assets/Cretificates/Cert11.png" alt="">
+        <h3>Certificate 11</h3>
       </div>
 
     </div>
@@ -627,164 +785,178 @@
   </section>
 
   <!-- TERMINAL -->
-
   <section>
 
     <h2 class="title">SOC Monitoring</h2>
 
     <div class="terminal">
 
-      <div class="green">
-        [INFO] Monitoring network traffic...
-      </div>
+      <div class="green">[INFO] Monitoring network traffic...</div>
 
-      <div class="yellow">
-        [WARNING] Suspicious login detected...
-      </div>
+      <div class="yellow">[WARNING] Suspicious login detected...</div>
 
-      <div class="red">
-        [BLOCKED] Firewall blocked malicious IP...
-      </div>
+      <div class="red">[BLOCKED] Firewall blocked malicious IP...</div>
 
-      <div class="cyan">
-        [ACTIVE] SIEM alerts operational...
-      </div>
+      <div class="cyan">[ACTIVE] SIEM alerts operational...</div>
 
-      <div>
-        > root@mostafa-soc:~$
-      </div>
+      <div>> root@mostafa-soc:~$</div>
 
     </div>
 
   </section>
 
   <!-- CONTACT -->
-
   <section id="contact">
 
     <h2 class="title">Contact Me</h2>
 
-    <div class="cards">
+    <div class="contact-container">
 
-      <div class="card">
+      <a href="mailto:mostafa10020038@gmail.com" class="contact-card">
+
+        <i class="fa-solid fa-envelope"></i>
 
         <h3>Email</h3>
 
-        <p>
+        <p>Send Email</p>
 
-          <a href="mailto:mostafa10020038@gmail.com"
-          style="color:cyan;text-decoration:none;">
+      </a>
 
-          mostafa10020038@gmail.com
+      <a href="https://wa.me/201013421811" target="_blank" class="contact-card">
 
-          </a>
-
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>LinkedIn</h3>
-
-        <p>
-
-          <a href="#"
-          target="_blank"
-          style="color:cyan;text-decoration:none;">
-
-          View LinkedIn Profile
-
-          </a>
-
-        </p>
-
-      </div>
-
-      <div class="card">
+        <i class="fa-brands fa-whatsapp"></i>
 
         <h3>WhatsApp</h3>
 
-        <p>
+        <p>Chat Directly</p>
 
-          <a href="https://wa.me/201013421811"
-          target="_blank"
-          style="color:cyan;text-decoration:none;">
+      </a>
 
-          Chat on WhatsApp
+      <a href="https://www.linkedin.com/in/mostafa-boghdady-/" target="_blank" class="contact-card">
 
-          </a>
+        <i class="fa-brands fa-linkedin"></i>
 
-        </p>
+        <h3>LinkedIn</h3>
 
-      </div>
+        <p>View Profile</p>
+
+      </a>
+
+      <a href="https://tryhackme.com/p/MBoghdady" target="_blank" class="contact-card">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <h3>TryHackMe</h3>
+
+        <p>View Labs</p>
+
+      </a>
 
     </div>
 
   </section>
 
+  <!-- FOOTER -->
   <footer>
-
     © 2026 Mostafa Boghdady | SOC Analyst Portfolio
-
   </footer>
 
+  <!-- JS -->
   <script>
+
+    /* =========================
+       TYPING EFFECT
+    ========================= */
 
     const roles = [
       "SOC Analyst",
       "Threat Hunter",
       "Blue Team Specialist",
-      "Network Security Engineer"
+      "Cyber Security Enthusiast"
     ];
 
     let roleIndex = 0;
     let charIndex = 0;
     let deleting = false;
 
-    const typing = document.getElementById('typing');
+    const typing = document.getElementById("typing");
 
-    function typeEffect(){
+    function typeEffect() {
 
       const current = roles[roleIndex];
 
-      if(!deleting){
+      if (!deleting) {
 
-        typing.textContent =
-        current.substring(0,charIndex++);
+        typing.textContent = current.substring(0, charIndex++);
 
-        if(charIndex > current.length){
+        if (charIndex > current.length) {
 
           deleting = true;
 
-          setTimeout(typeEffect,1500);
+          setTimeout(typeEffect, 1500);
 
           return;
         }
 
       } else {
 
-        typing.textContent =
-        current.substring(0,charIndex--);
+        typing.textContent = current.substring(0, charIndex--);
 
-        if(charIndex === 0){
+        if (charIndex === 0) {
 
           deleting = false;
 
-          roleIndex =
-          (roleIndex + 1) % roles.length;
-        }
+          roleIndex = (roleIndex + 1) % roles.length;
 
+        }
       }
 
-      setTimeout(typeEffect,
-      deleting ? 40 : 90);
+      setTimeout(typeEffect, deleting ? 40 : 90);
 
     }
 
     typeEffect();
 
+    /* =========================
+       CUSTOM CURSOR
+    ========================= */
+
+    const cursor = document.querySelector(".cursor");
+    const cursorDot = document.querySelector(".cursor-dot");
+
+    window.addEventListener("mousemove", (e) => {
+
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+
+      cursorDot.style.left = e.clientX + "px";
+      cursorDot.style.top = e.clientY + "px";
+
+    });
+
+    const hoverElements = document.querySelectorAll(
+      "a, button, .card, .skill, .contact-card"
+    );
+
+    hoverElements.forEach((element) => {
+
+      element.addEventListener("mouseenter", () => {
+
+        cursor.classList.add("cursor-hover");
+
+      });
+
+      element.addEventListener("mouseleave", () => {
+
+        cursor.classList.remove("cursor-hover");
+
+      });
+
+    });
+
   </script>
 
 </body>
+
 </html>
+```
