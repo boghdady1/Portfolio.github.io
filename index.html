@@ -342,7 +342,7 @@
       <ul id="menu">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Project</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certificates">Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -458,18 +458,27 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="wrap">
-      <h2 class="title">Key project</h2>
-      <p class="lead">The network I designed and defended for my diploma graduation project.</p>
+      <h2 class="title">Projects</h2>
+      <p class="lead">Projects where I was the team leader.</p>
 
       <article class="project">
         <h3>APEX: Automated Protection &amp; Execution</h3>
         <p class="sub">Team Leader, Diploma Graduation Project</p>
         <p>
-          I led the team in designing and delivering a security automation platform. I owned the network architecture decisions,
-          team coordination, delivery and technical documentation. A Sophos XGS next-generation firewall is the core of the architecture.
+          APEX is a SOC automation platform that connects detection, decision and response in one pipeline.
+          It runs as a 10-VM VMware lab, with AI components for reporting and endpoint detection.
+          I led the team and owned the network architecture decisions, team coordination, delivery and technical documentation.
         </p>
 
-        <p class="flow-cap" style="margin-top:1.4rem">What the firewall does in APEX</p>
+        <p class="flow-cap" style="margin-top:1.4rem">The whole platform: from alert to response</p>
+        <ol class="flow">
+          <li><strong>Collect</strong><span>Endpoint, Active Directory and firewall logs are sent to Wazuh.</span></li>
+          <li><strong>Detect</strong><span>Wazuh SIEM raises an alert when it sees suspicious activity.</span></li>
+          <li><strong>Decide</strong><span>Shuffle SOAR playbooks and n8n workflows enrich and triage the alert.</span></li>
+          <li><strong>Respond</strong><span>The Sophos firewall blocks the source or redirects the attacker to the honeypot.</span></li>
+        </ol>
+
+        <p class="flow-cap" style="margin-top:1.4rem">My focus: the Sophos XGS firewall at the core of the architecture</p>
         <ol class="flow">
           <li><strong>Segment</strong><span>Dedicated zones: LAN, Internal Servers, DMZ, SOC, Honeypot and WAN.</span></li>
           <li><strong>Control</strong><span>Least-privilege firewall rules, ACLs and NAT policies between zones.</span></li>
@@ -484,9 +493,19 @@
 
         <div class="chips">
           <span class="chip">Sophos XGS</span><span class="chip">Network segmentation</span><span class="chip">IPS</span>
-          <span class="chip">ACLs and NAT</span><span class="chip">Wazuh SIEM</span>
+          <span class="chip">ACLs and NAT</span><span class="chip">Wazuh SIEM</span><span class="chip">Shuffle SOAR</span>
+          <span class="chip">n8n</span><span class="chip">Honeypot</span><span class="chip">VMware</span>
           <span class="chip">Active Directory, DNS, DHCP</span><span class="chip">Group Policy</span>
         </div>
+      </article>
+
+      <article class="project">
+        <h3>Security Awareness Platform</h3>
+        <p class="sub">Team Leader</p>
+        <p>
+          A platform built to raise security awareness. I led the team and was responsible for building the platform
+          and for its ideas.
+        </p>
       </article>
     </div>
   </section>
