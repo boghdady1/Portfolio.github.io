@@ -199,6 +199,7 @@
   }
   .project .chip { background: var(--bg); }
   .project .chips { margin-top: 1.1rem; }
+  .demo-btn { margin-top: 1.2rem; }
 
   /* ---------- Skills ---------- */
   .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem clamp(2rem, 5vw, 4rem); }
@@ -224,7 +225,17 @@
   .cert.featured .name { font-family: var(--head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
   .cert.featured .desc { display: block; color: var(--muted); margin-top: 0.7rem; max-width: 52ch; }
   .also { margin-bottom: 2.2rem; }
-  .subhead { font-family: var(--head); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem; }
+  .subhead { font-family: var(--head); font-weight: 600; font-size: 1.2rem; margin: 2.8rem 0 0.9rem; }
+  .lead + .subhead { margin-top: 0; }
+  .slider-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.8rem 0 0.8rem; }
+  .slider-title { color: var(--muted); font-size: 0.95rem; }
+  .slider-btns { display: flex; gap: 0.5rem; flex: none; }
+  .slider {
+    display: flex; gap: 1.1rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 0.9rem; -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  }
+  .slider .cert { flex: 0 0 min(250px, 72vw); width: auto; scroll-snap-align: start; }
   .also h3 { font-family: var(--head); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem; }
 
   dialog.viewer {
@@ -328,6 +339,7 @@
   <symbol id="i-useradd" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
 </svg>
@@ -470,6 +482,9 @@
           It runs as a 10-VM VMware lab, with AI components for reporting and endpoint detection.
           I led the team and owned the network architecture decisions, team coordination, delivery and technical documentation.
         </p>
+        <a class="btn demo-btn" href="https://drive.google.com/file/d/17b6RprZwr5NY8pBq4eaHbaq6mndFjJdp/view?usp=sharing" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#i-play"/></svg> Watch the APEX demo
+        </a>
 
         <p class="flow-cap" style="margin-top:1.4rem">The whole platform: from alert to response</p>
         <ol class="flow">
@@ -560,76 +575,86 @@
   <section id="certificates">
     <div class="wrap">
       <h2 class="title">Certificates</h2>
-      <p class="lead">Tap a certificate image to view it full size.</p>
+      <p class="lead">Tap any certificate to view it full size.</p>
 
-      <div class="also">
-        <h3>Networking and systems</h3>
-        <div class="chips">
-          <span class="chip">CCNA (2025)</span>
-          <span class="chip">HCIA Data Communication, Huawei (in progress)</span>
-          <span class="chip">System Administrator, Red Hat Linux (2022)</span>
-        </div>
+      <h3 class="subhead">Network security</h3>
+      <div class="certs">
+        <button class="cert contain" type="button" data-src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" data-title="FortiOS 7.6 Administrator">
+          <img loading="lazy" src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" alt="Certificate: FortiOS 7.6 Administrator, Fortinet">
+          <span class="meta"><span class="name">FortiOS 7.6 Administrator</span><span class="by">Fortinet, 2026</span></span>
+        </button>
+      </div>
+      <div class="chips" style="margin-top:1.1rem">
+        <span class="chip">CCNA (2025)</span>
+        <span class="chip">HCIA Data Communication, Huawei (in progress)</span>
+        <span class="chip">System Administrator, Red Hat Linux (2022)</span>
       </div>
 
-      <h3 class="subhead">Google and IBM courses</h3>
-
-      <div class="certs" id="certs">
+      <h3 class="subhead">Google Cybersecurity Professional Certificate</h3>
+      <div class="certs">
         <button class="cert featured" type="button" data-src="Assets/Cretificates/Cert1.png" data-title="Google Cybersecurity Professional Certificate">
-          <img src="Assets/Cretificates/Cert1.png" alt="Google Cybersecurity Professional Certificate" width="1000" height="772">
+          <img src="Assets/Cretificates/Cert1.png" alt="Google Cybersecurity Professional Certificate">
           <span class="meta">
             <span class="name">Google Cybersecurity Professional Certificate</span>
             <span class="by">Google, via Coursera. 19 Apr 2026</span>
             <span class="desc">Nine courses covering security fundamentals, networks, Linux and SQL, assets and threats, detection and response, and Python automation.</span>
           </span>
         </button>
-
-        <button class="cert contain" type="button" data-src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" data-title="FortiOS 7.6 Administrator">
-          <img loading="lazy" src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" alt="Certificate: FortiOS 7.6 Administrator, Fortinet">
-          <span class="meta"><span class="name">FortiOS 7.6 Administrator</span><span class="by">Fortinet, 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert11.png" data-title="Accelerate Your Job Search with AI">
-          <img loading="lazy" src="Assets/Cretificates/Cert11.png" alt="Certificate: Accelerate Your Job Search with AI" width="1000" height="770">
-          <span class="meta"><span class="name">Accelerate Your Job Search with AI</span><span class="by">Google, 18 Apr 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert10.png" data-title="Put It to Work: Prepare for Cybersecurity Jobs">
-          <img loading="lazy" src="Assets/Cretificates/Cert10.png" alt="Certificate: Put It to Work, Prepare for Cybersecurity Jobs" width="1000" height="773">
-          <span class="meta"><span class="name">Put It to Work: Prepare for Cybersecurity Jobs</span><span class="by">Google, 18 Apr 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert2.png" data-title="Automate Cybersecurity Tasks with Python">
-          <img loading="lazy" src="Assets/Cretificates/Cert2.png" alt="Certificate: Automate Cybersecurity Tasks with Python" width="1000" height="775">
-          <span class="meta"><span class="name">Automate Cybersecurity Tasks with Python</span><span class="by">Google, 6 Apr 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert5.png" data-title="Sound the Alarm: Detection and Response">
-          <img loading="lazy" src="Assets/Cretificates/Cert5.png" alt="Certificate: Sound the Alarm, Detection and Response" width="1000" height="770">
-          <span class="meta"><span class="name">Sound the Alarm: Detection and Response</span><span class="by">Google, 17 Mar 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert6.png" data-title="Assets, Threats, and Vulnerabilities">
-          <img loading="lazy" src="Assets/Cretificates/Cert6.png" alt="Certificate: Assets, Threats, and Vulnerabilities" width="1000" height="771">
-          <span class="meta"><span class="name">Assets, Threats, and Vulnerabilities</span><span class="by">Google, 7 Mar 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert3.png" data-title="Tools of the Trade: Linux and SQL">
-          <img loading="lazy" src="Assets/Cretificates/Cert3.png" alt="Certificate: Tools of the Trade, Linux and SQL" width="1000" height="774">
-          <span class="meta"><span class="name">Tools of the Trade: Linux and SQL</span><span class="by">Google, 21 Feb 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert8.png" data-title="Connect and Protect: Networks and Network Security">
-          <img loading="lazy" src="Assets/Cretificates/Cert8.png" alt="Certificate: Connect and Protect, Networks and Network Security" width="1000" height="771">
-          <span class="meta"><span class="name">Connect and Protect: Networks and Network Security</span><span class="by">Google, 3 Feb 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert7.png" data-title="Play It Safe: Manage Security Risks">
-          <img loading="lazy" src="Assets/Cretificates/Cert7.png" alt="Certificate: Play It Safe, Manage Security Risks" width="1000" height="770">
-          <span class="meta"><span class="name">Play It Safe: Manage Security Risks</span><span class="by">Google, 18 Jan 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert4.png" data-title="Foundations of Cybersecurity">
-          <img loading="lazy" src="Assets/Cretificates/Cert4.png" alt="Certificate: Foundations of Cybersecurity" width="1000" height="776">
-          <span class="meta"><span class="name">Foundations of Cybersecurity</span><span class="by">Google, 13 Jan 2026</span></span>
-        </button>
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert9.png" data-title="Delivering Quality Work with Agility">
-          <img loading="lazy" src="Assets/Cretificates/Cert9.png" alt="Certificate: Delivering Quality Work with Agility" width="1000" height="772">
-          <span class="meta"><span class="name">Delivering Quality Work with Agility</span><span class="by">IBM, 13 Jan 2026</span></span>
-        </button>
       </div>
 
-      
+      <div class="slider-head">
+        <p class="slider-title">The 9 courses. Swipe or use the arrows.</p>
+        <div class="slider-btns">
+          <button class="icon-btn" type="button" id="sliderPrev" aria-label="Scroll courses left"><svg class="icon"><use href="#i-left"/></svg></button>
+          <button class="icon-btn" type="button" id="sliderNext" aria-label="Scroll courses right"><svg class="icon"><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+      <div class="slider" id="slider" tabindex="0" aria-label="Google course certificates">
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert4.png" data-title="Foundations of Cybersecurity">
+            <img loading="lazy" src="Assets/Cretificates/Cert4.png" alt="Certificate: Foundations of Cybersecurity">
+            <span class="meta"><span class="name">Foundations of Cybersecurity</span><span class="by">Google, 13 Jan 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert7.png" data-title="Play It Safe: Manage Security Risks">
+            <img loading="lazy" src="Assets/Cretificates/Cert7.png" alt="Certificate: Play It Safe: Manage Security Risks">
+            <span class="meta"><span class="name">Play It Safe: Manage Security Risks</span><span class="by">Google, 18 Jan 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert8.png" data-title="Connect and Protect: Networks and Network Security">
+            <img loading="lazy" src="Assets/Cretificates/Cert8.png" alt="Certificate: Connect and Protect: Networks and Network Security">
+            <span class="meta"><span class="name">Connect and Protect: Networks and Network Security</span><span class="by">Google, 3 Feb 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert3.png" data-title="Tools of the Trade: Linux and SQL">
+            <img loading="lazy" src="Assets/Cretificates/Cert3.png" alt="Certificate: Tools of the Trade: Linux and SQL">
+            <span class="meta"><span class="name">Tools of the Trade: Linux and SQL</span><span class="by">Google, 21 Feb 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert6.png" data-title="Assets, Threats, and Vulnerabilities">
+            <img loading="lazy" src="Assets/Cretificates/Cert6.png" alt="Certificate: Assets, Threats, and Vulnerabilities">
+            <span class="meta"><span class="name">Assets, Threats, and Vulnerabilities</span><span class="by">Google, 7 Mar 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert5.png" data-title="Sound the Alarm: Detection and Response">
+            <img loading="lazy" src="Assets/Cretificates/Cert5.png" alt="Certificate: Sound the Alarm: Detection and Response">
+            <span class="meta"><span class="name">Sound the Alarm: Detection and Response</span><span class="by">Google, 17 Mar 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert2.png" data-title="Automate Cybersecurity Tasks with Python">
+            <img loading="lazy" src="Assets/Cretificates/Cert2.png" alt="Certificate: Automate Cybersecurity Tasks with Python">
+            <span class="meta"><span class="name">Automate Cybersecurity Tasks with Python</span><span class="by">Google, 6 Apr 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert10.png" data-title="Put It to Work: Prepare for Cybersecurity Jobs">
+            <img loading="lazy" src="Assets/Cretificates/Cert10.png" alt="Certificate: Put It to Work: Prepare for Cybersecurity Jobs">
+            <span class="meta"><span class="name">Put It to Work: Prepare for Cybersecurity Jobs</span><span class="by">Google, 18 Apr 2026</span></span>
+          </button>
+          <button class="cert" type="button" data-src="Assets/Cretificates/Cert11.png" data-title="Accelerate Your Job Search with AI">
+            <img loading="lazy" src="Assets/Cretificates/Cert11.png" alt="Certificate: Accelerate Your Job Search with AI">
+            <span class="meta"><span class="name">Accelerate Your Job Search with AI</span><span class="by">Google, 18 Apr 2026</span></span>
+          </button>
+      </div>
+
+      <h3 class="subhead">Other courses</h3>
+      <div class="certs">
+        <button class="cert" type="button" data-src="Assets/Cretificates/Cert9.png" data-title="Delivering Quality Work with Agility">
+            <img loading="lazy" src="Assets/Cretificates/Cert9.png" alt="Certificate: Delivering Quality Work with Agility">
+            <span class="meta"><span class="name">Delivering Quality Work with Agility</span><span class="by">IBM, 13 Jan 2026</span></span>
+          </button>
+      </div>
     </div>
   </section>
 
@@ -755,6 +780,12 @@
     if (typeof viewer.showModal === 'function') viewer.showModal();
     else window.open(c.dataset.src, '_blank');
   }));
+  // Course slider arrows
+  const slider = document.getElementById('slider');
+  const step = () => Math.max(slider.clientWidth * 0.8, 260);
+  document.getElementById('sliderPrev').addEventListener('click', () => slider.scrollBy({ left: -step(), behavior: 'smooth' }));
+  document.getElementById('sliderNext').addEventListener('click', () => slider.scrollBy({ left: step(), behavior: 'smooth' }));
+
   document.getElementById('viewerClose').addEventListener('click', () => viewer.close());
   document.getElementById('viewerPrev').addEventListener('click', () => show(current - 1));
   document.getElementById('viewerNext').addEventListener('click', () => show(current + 1));
