@@ -9,6 +9,13 @@
 <meta property="og:title" content="Mostafa Boghdady | Network Security Engineer">
 <meta property="og:description" content="FortiGate and Sophos firewalls, Cisco switching, VLAN segmentation and site-to-site IPsec VPN.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://portfolio-github-io-ten-mu.vercel.app/">
+<meta property="og:image" content="https://portfolio-github-io-ten-mu.vercel.app/Assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mostafa Boghdady, Network Security Engineer: portfolio home page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://portfolio-github-io-ten-mu.vercel.app/Assets/og-preview.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071019'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%2335d6e8'%3EMB%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -367,7 +374,7 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="wrap hero-grid">
       <div class="hero-text">
         <p class="status"><i></i> Open to Network Security and SOC roles</p>
@@ -759,6 +766,7 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+    const heroEl = document.getElementById('hero'); if (heroEl) io.observe(heroEl);
   }
 
   // Certificate viewer
