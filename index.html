@@ -17,6 +17,246 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://portfolio-github-io-ten-mu.vercel.app/Assets/og-preview.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071019'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%2335d6e8'%3EMB%3C/text%3E%3C/svg%3E">
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+ 
+<style>
+  :root {
+    --bg: #071019;
+    --panel: #0d1b2a;
+    --panel-2: #112338;
+    --line: #1f3550;
+    --text: #e8f0f8;
+    --muted: #9bb0c6;
+    --accent: #35d6e8;
+    --accent-ink: #04222a;
+    --ok: #4ade80;
+    --radius: 14px;
+    --head: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    --wrap: 1100px;
+  }
+ 
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+ 
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+ 
+  .wrap { width: min(var(--wrap), 100% - 2.5rem); margin-inline: auto; }
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  section + section { border-top: 1px solid var(--line); }
+ 
+  h2.title {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .lead { color: var(--muted); max-width: 60ch; margin-bottom: 2.2rem; }
+ 
+  .icon { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+ 
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    min-height: 48px; padding: 0.7rem 1.25rem;
+    border-radius: 10px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--text);
+    font: 600 1rem/1 var(--body); text-decoration: none; cursor: pointer;
+    transition: border-color .2s, background .2s, transform .2s;
+  }
+  .btn:hover { border-color: var(--accent); background: var(--panel-2); }
+  .btn:active { transform: translateY(1px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { background: #5be3f2; }
+ 
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    background: rgba(7, 16, 25, 0.88);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-family: var(--head); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; text-decoration: none; }
+  .brand b { color: var(--accent); font-weight: 700; }
+  .nav ul { display: flex; gap: 0.25rem; }
+  .nav ul a {
+    display: block; padding: 0.55rem 0.85rem; border-radius: 8px;
+    text-decoration: none; color: var(--muted); font-size: 0.95rem; font-weight: 500;
+  }
+  .nav ul a:hover, .nav ul a.active { color: var(--text); background: var(--panel); }
+  .nav ul a.active { color: var(--accent); }
+  .menu-btn {
+    display: none; width: 48px; height: 48px; align-items: center; justify-content: center;
+    background: transparent; border: 1px solid var(--line); border-radius: 10px; color: var(--text); cursor: pointer;
+  }
+  .menu-btn .icon { width: 24px; height: 24px; }
+ 
+  /* ---------- Hero ---------- */
+  .hero { padding-top: calc(64px + clamp(2.5rem, 7vw, 5rem)); padding-bottom: clamp(3rem, 7vw, 5rem); }
+  .hero-grid {
+    display: grid; gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    grid-template-areas: "text photo";
+    align-items: center;
+  }
+  .hero-text { grid-area: text; animation: rise .7s ease both; }
+  .hero-photo { grid-area: photo; animation: rise .7s .12s ease both; justify-self: center; position: relative; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+ 
+  .status {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--panel); color: var(--muted); font-size: 0.9rem; margin-bottom: 1.4rem;
+  }
+  .status i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(74, 222, 128, .18); }
+ 
+  h1 {
+    font-family: var(--head); font-weight: 700;
+    font-size: clamp(2.6rem, 7.2vw, 5rem);
+    line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 1rem;
+  }
+  .role { font-family: var(--head); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--accent); margin-bottom: 1.2rem; }
+  .intro { color: var(--muted); max-width: 58ch; margin-bottom: 1.8rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.4rem; }
+  .social { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .social a {
+    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.5rem 0.9rem;
+    border-radius: 10px; color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    border: 1px solid transparent;
+  }
+  .social a:hover { color: var(--text); border-color: var(--line); background: var(--panel); }
+ 
+  .photo-frame { position: relative; width: min(340px, 78vw); }
+  .photo-frame::before {
+    content: ""; position: absolute; inset: 14px -14px -14px 14px;
+    border: 2px solid var(--accent); border-radius: 22px; opacity: .55;
+  }
+  .photo-frame img { position: relative; width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--line); background: var(--panel); }
+ 
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); }
+  .about-grid p { color: var(--muted); max-width: 62ch; }
+  .about-grid p + p { margin-top: 1rem; }
+  .facts { display: grid; gap: 1.1rem; align-content: start; }
+  .facts div { padding-left: 1rem; border-left: 2px solid var(--line); }
+  .facts dt { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .facts dd { font-weight: 500; }
+ 
+  /* ---------- Timeline ---------- */
+  .timeline { position: relative; display: grid; gap: 2rem; padding-left: 1.75rem; }
+  .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .tl-item { position: relative; }
+  .tl-item::before {
+    content: ""; position: absolute; left: calc(-1.75rem + 0px); top: 0.55rem; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+  }
+  .tl-date { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
+  .tl-item h3 { font-family: var(--head); font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0.15rem 0 0.1rem; }
+  .tl-org { color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; }
+  .tl-item p { color: var(--muted); max-width: 66ch; }
+  .tl-item ul, .plist { display: grid; gap: 0.45rem; max-width: 66ch; }
+  .tl-item li, .plist li { color: var(--muted); padding-left: 1.1rem; position: relative; }
+  .tl-item li::before, .plist li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 2px; background: var(--accent); }
+ 
+  /* ---------- Projects ---------- */
+  .project { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); }
+  .project + .project { margin-top: 1.25rem; }
+  .project h3 { font-family: var(--head); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 1.7rem); line-height: 1.2; margin-bottom: 0.3rem; }
+  .project .sub { color: var(--accent); font-weight: 500; margin-bottom: 0.9rem; }
+  .project p { color: var(--muted); max-width: 70ch; }
+  .project p + p { margin-top: 0.8rem; }
+ 
+  .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0; counter-reset: step; }
+  .flow li {
+    position: relative; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0.9rem 1rem; counter-increment: step;
+  }
+  .flow li:not(:last-child)::after {
+    content: ""; position: absolute; right: -0.75rem; top: 50%; width: 0.75rem; height: 2px; background: var(--accent);
+  }
+  .flow strong { display: block; font-family: var(--head); font-weight: 600; font-size: 1rem; }
+  .flow span { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin-top: 0.2rem; }
+  .flow-cap { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
+ 
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    padding: 0.35rem 0.75rem; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--panel); font-size: 0.92rem; color: var(--text);
+  }
+  .project .chip { background: var(--bg); }
+  .project .chips { margin-top: 1.1rem; }
+  .demo-btn { margin-top: 1.2rem; }
+ 
+  /* ---------- Skills ---------- */
+  .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem clamp(2rem, 5vw, 4rem); }
+  .skill-groups h3 { font-family: var(--head); font-weight: 600; font-size: 1.15rem; margin-bottom: 0.9rem; }
+  .skill-groups .wide { grid-column: 1 / -1; }
+ 
+  /* ---------- Certificates ---------- */
+  .certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.1rem; }
+  .cert {
+    display: block; width: 100%; padding: 0; text-align: left; cursor: zoom-in;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+    color: inherit; font: inherit; transition: border-color .2s;
+  }
+  .cert:hover { border-color: var(--accent); }
+  .cert.contain img { object-fit: contain; object-position: center; }
+  .cert img { width: 100%; height: auto; aspect-ratio: 1000 / 770; object-fit: cover; object-position: top left; background: #fff; }
+  .cert .meta { padding: 0.8rem 1rem 1rem; }
+  .cert .name { display: block; font-weight: 600; line-height: 1.35; font-size: 1rem; }
+  .cert .by { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 0.2rem; }
+  .cert.featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; }
+  .cert.featured img { aspect-ratio: 4 / 3; height: 100%; max-height: 360px; }
+  .cert.featured .meta { padding: clamp(1.2rem, 3vw, 2rem); }
+  .cert.featured .name { font-family: var(--head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
+  .cert.featured .desc { display: block; color: var(--muted); margin-top: 0.7rem; max-width: 52ch; }
+  .also { margin-bottom: 2.2rem; }
+  .subhead { font-family: var(--head); font-weight: 600; font-size: 1.2rem; margin: 2.8rem 0 0.9rem; }
+  .lead + .subhead { margin-top: 0; }
+  .slider-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.8rem 0 0.8rem; }
+  .slider-title { color: var(--muted); font-size: 0.95rem; }
+  .slider-btns { display: flex; gap: 0.5rem; flex: none; }
+  .slider {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mostafa Boghdady | Network Security Engineer</title>
+<meta name="description" content="Portfolio of Mostafa Boghdady, Network Security Engineer: FortiGate and Sophos firewalls, Cisco switching, VLAN segmentation and site-to-site IPsec VPN.">
+<meta name="theme-color" content="#071019">
+<meta property="og:title" content="Mostafa Boghdady | Network Security Engineer">
+<meta property="og:description" content="FortiGate and Sophos firewalls, Cisco switching, VLAN segmentation and site-to-site IPsec VPN.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://portfolio-github-io-ten-mu.vercel.app/">
+<meta property="og:image" content="https://portfolio-github-io-ten-mu.vercel.app/Assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mostafa Boghdady, Network Security Engineer: portfolio home page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://portfolio-github-io-ten-mu.vercel.app/Assets/og-preview.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071019'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%2335d6e8'%3EMB%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,704 +344,9 @@
     display: block; padding: 0.55rem 0.85rem; border-radius: 8px;
     text-decoration: none; color: var(--muted); font-size: 0.95rem; font-weight: 500;
   }
-  .nav ul a:hover, .nav ul a.active { color: var(--text); background: var(--panel); }
-  .nav ul a.active { color: var(--accent); }
-  .menu-btn {
-    display: none; width: 48px; height: 48px; align-items: center; justify-content: center;
-    background: transparent; border: 1px solid var(--line); border-radius: 10px; color: var(--text); cursor: pointer;
-  }
-  .menu-btn .icon { width: 24px; height: 24px; }
-
-  /* ---------- Hero ---------- */
-  .hero { padding-top: calc(64px + clamp(2.5rem, 7vw, 5rem)); padding-bottom: clamp(3rem, 7vw, 5rem); }
-  .hero-grid {
-    display: grid; gap: clamp(2rem, 5vw, 4rem);
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-    grid-template-areas: "text photo";
-    align-items: center;
-  }
-  .hero-text { grid-area: text; animation: rise .7s ease both; }
-  .hero-photo { grid-area: photo; animation: rise .7s .12s ease both; justify-self: center; position: relative; }
-  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-
-  .status {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 999px;
-    background: var(--panel); color: var(--muted); font-size: 0.9rem; margin-bottom: 1.4rem;
-  }
-  .status i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(74, 222, 128, .18); }
-
-  h1 {
-    font-family: var(--head); font-weight: 700;
-    font-size: clamp(2.6rem, 7.2vw, 5rem);
-    line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 1rem;
-  }
-  .role { font-family: var(--head); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--accent); margin-bottom: 1.2rem; }
-  .intro { color: var(--muted); max-width: 58ch; margin-bottom: 1.8rem; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.4rem; }
-  .social { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .social a {
-    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.5rem 0.9rem;
-    border-radius: 10px; color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
-    border: 1px solid transparent;
-  }
-  .social a:hover { color: var(--text); border-color: var(--line); background: var(--panel); }
-
-  .photo-frame { position: relative; width: min(340px, 78vw); }
-  .photo-frame::before {
-    content: ""; position: absolute; inset: 14px -14px -14px 14px;
-    border: 2px solid var(--accent); border-radius: 22px; opacity: .55;
-  }
-  .photo-frame img { position: relative; width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid var(--line); background: var(--panel); }
-
-  /* ---------- About ---------- */
-  .about-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); }
-  .about-grid p { color: var(--muted); max-width: 62ch; }
-  .about-grid p + p { margin-top: 1rem; }
-  .facts { display: grid; gap: 1.1rem; align-content: start; }
-  .facts div { padding-left: 1rem; border-left: 2px solid var(--line); }
-  .facts dt { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.15rem; }
-  .facts dd { font-weight: 500; }
-
-  /* ---------- Timeline ---------- */
-  .timeline { position: relative; display: grid; gap: 2rem; padding-left: 1.75rem; }
-  .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
-  .tl-item { position: relative; }
-  .tl-item::before {
-    content: ""; position: absolute; left: calc(-1.75rem + 0px); top: 0.55rem; width: 12px; height: 12px;
-    border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
-  }
-  .tl-date { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
-  .tl-item h3 { font-family: var(--head); font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin: 0.15rem 0 0.1rem; }
-  .tl-org { color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; }
-  .tl-item p { color: var(--muted); max-width: 66ch; }
-  .tl-item ul, .plist { display: grid; gap: 0.45rem; max-width: 66ch; }
-  .tl-item li, .plist li { color: var(--muted); padding-left: 1.1rem; position: relative; }
-  .tl-item li::before, .plist li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 2px; background: var(--accent); }
-
-  /* ---------- Projects ---------- */
-  .project { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); }
-  .project + .project { margin-top: 1.25rem; }
-  .project h3 { font-family: var(--head); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 1.7rem); line-height: 1.2; margin-bottom: 0.3rem; }
-  .project .sub { color: var(--accent); font-weight: 500; margin-bottom: 0.9rem; }
-  .project p { color: var(--muted); max-width: 70ch; }
-  .project p + p { margin-top: 0.8rem; }
-
-  .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin: 1.5rem 0; counter-reset: step; }
-  .flow li {
-    position: relative; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
-    padding: 0.9rem 1rem; counter-increment: step;
-  }
-  .flow li:not(:last-child)::after {
-    content: ""; position: absolute; right: -0.75rem; top: 50%; width: 0.75rem; height: 2px; background: var(--accent);
-  }
-  .flow strong { display: block; font-family: var(--head); font-weight: 600; font-size: 1rem; }
-  .flow span { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin-top: 0.2rem; }
-  .flow-cap { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .chip {
-    padding: 0.35rem 0.75rem; border-radius: 8px; border: 1px solid var(--line);
-    background: var(--panel); font-size: 0.92rem; color: var(--text);
-  }
-  .project .chip { background: var(--bg); }
-  .project .chips { margin-top: 1.1rem; }
-  .demo-btn { margin-top: 1.2rem; }
-
-  /* ---------- Skills ---------- */
-  .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem clamp(2rem, 5vw, 4rem); }
-  .skill-groups h3 { font-family: var(--head); font-weight: 600; font-size: 1.15rem; margin-bottom: 0.9rem; }
-  .skill-groups .wide { grid-column: 1 / -1; }
-
-  /* ---------- Certificates ---------- */
-  .certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.1rem; }
-  .cert {
-    display: block; width: 100%; padding: 0; text-align: left; cursor: zoom-in;
-    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
-    color: inherit; font: inherit; transition: border-color .2s;
-  }
-  .cert:hover { border-color: var(--accent); }
-  .cert.contain img { object-fit: contain; object-position: center; }
-  .cert img { width: 100%; height: auto; aspect-ratio: 1000 / 770; object-fit: cover; object-position: top left; background: #fff; }
-  .cert .meta { padding: 0.8rem 1rem 1rem; }
-  .cert .name { display: block; font-weight: 600; line-height: 1.35; font-size: 1rem; }
-  .cert .by { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 0.2rem; }
-  .cert.featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; }
-  .cert.featured img { aspect-ratio: 4 / 3; height: 100%; max-height: 360px; }
-  .cert.featured .meta { padding: clamp(1.2rem, 3vw, 2rem); }
-  .cert.featured .name { font-family: var(--head); font-size: clamp(1.3rem, 2.6vw, 1.7rem); }
-  .cert.featured .desc { display: block; color: var(--muted); margin-top: 0.7rem; max-width: 52ch; }
-  .also { margin-bottom: 2.2rem; }
-  .subhead { font-family: var(--head); font-weight: 600; font-size: 1.2rem; margin: 2.8rem 0 0.9rem; }
-  .lead + .subhead { margin-top: 0; }
-  .slider-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.8rem 0 0.8rem; }
-  .slider-title { color: var(--muted); font-size: 0.95rem; }
-  .slider-btns { display: flex; gap: 0.5rem; flex: none; }
-  .slider {
-    display: flex; gap: 1.1rem; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding-bottom: 0.9rem; -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
-  }
-  .slider .cert { flex: 0 0 min(250px, 72vw); width: auto; scroll-snap-align: start; }
-  .also h3 { font-family: var(--head); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.8rem; }
-
-  dialog.viewer {
-    border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); color: var(--text);
-    padding: 0; width: min(980px, 96vw); max-height: 94vh; overflow: hidden;
-  }
-  dialog.viewer::backdrop { background: rgba(2, 6, 12, 0.85); }
-  .viewer-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 0.7rem 0.7rem 1.1rem; border-bottom: 1px solid var(--line); }
-  .viewer-bar strong { font-weight: 600; font-size: 0.98rem; line-height: 1.3; }
-  .viewer-body { overflow: auto; max-height: calc(94vh - 130px); background: #fff; }
-  .viewer-body img { width: 100%; height: auto; }
-  .viewer-nav { display: flex; justify-content: space-between; padding: 0.7rem; border-top: 1px solid var(--line); }
-  .icon-btn { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--line); background: var(--panel-2); color: var(--text); cursor: pointer; }
-  .icon-btn:hover { border-color: var(--accent); }
-
-  /* ---------- Volunteering ---------- */
-  .vol { display: grid; gap: 0; max-width: 760px; }
-  .vol li { display: flex; justify-content: space-between; gap: 1.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
-  .vol li:first-child { border-top: 1px solid var(--line); }
-  .vol span:last-child { font-family: var(--mono); font-size: 0.88rem; color: var(--muted); white-space: nowrap; padding-top: 0.15rem; }
-
-  /* ---------- Contact ---------- */
-  .contact-list { display: grid; gap: 0.75rem; max-width: 640px; margin-bottom: 1.6rem; }
-  .contact-row {
-    display: flex; align-items: center; gap: 1rem; min-height: 64px; padding: 0.8rem 1.1rem;
-    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
-    text-decoration: none; transition: border-color .2s, background .2s;
-  }
-  .contact-row:hover { border-color: var(--accent); background: var(--panel-2); }
-  .contact-row .icon { width: 26px; height: 26px; color: var(--accent); }
-  .contact-row b { display: block; font-weight: 600; line-height: 1.3; }
-  .contact-row small { display: block; color: var(--muted); font-size: 0.92rem; overflow-wrap: anywhere; }
-
-  footer { border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; color: var(--muted); font-size: 0.92rem; }
-
-  /* ---------- Mobile quick bar ---------- */
-  .quickbar { display: none; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 860px) {
-    .menu-btn { display: inline-flex; }
-    .nav ul {
-      position: absolute; top: calc(64px + env(safe-area-inset-top, 0px)); left: 0; right: 0;
-      flex-direction: column; gap: 0; padding: 0.5rem 1.25rem 1rem;
-      background: var(--bg); border-bottom: 1px solid var(--line); display: none;
-    }
-    .nav ul.open { display: flex; }
-    .nav ul a { padding: 0.95rem 0.5rem; font-size: 1.05rem; border-bottom: 1px solid var(--line); border-radius: 0; }
-
-    .hero-grid { grid-template-columns: 1fr; grid-template-areas: "photo" "text"; gap: 2rem; }
-    .hero-photo { justify-self: start; }
-    .photo-frame { width: min(210px, 62vw); }
-    .photo-frame::before { inset: 10px -10px -10px 10px; border-radius: 18px; }
-    .photo-frame img { border-radius: 18px; }
-
-    .about-grid { grid-template-columns: 1fr; }
-    .flow { grid-template-columns: 1fr; }
-    .flow li:not(:last-child)::after { right: auto; left: 1.5rem; top: auto; bottom: -0.75rem; width: 2px; height: 0.75rem; }
-    .skill-groups { grid-template-columns: 1fr; }
-    .cert.featured { grid-template-columns: 1fr; }
-    .cert.featured img { max-height: none; height: auto; }
-
-    .quickbar {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      position: fixed; inset: auto 0 0 0; z-index: 40;
-      background: rgba(7, 16, 25, .94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-      border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-    .quickbar a {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem;
-      min-height: 60px; text-decoration: none; font-size: 0.78rem; font-weight: 500; color: var(--muted);
-    }
-    .quickbar a:active { color: var(--accent); }
-    .quickbar .icon { width: 22px; height: 22px; color: var(--accent); }
-    body { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
-    .vol li { flex-direction: column; gap: 0.2rem; }
-  }
-
-  @media (max-width: 480px) {
-    body { font-size: 1rem; }
-    .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-  }
-</style>
-</head>
-
-<body>
-
-<!-- Icon sprite -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
   <symbol id="i-useradd" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
-  <symbol id="i-left" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
-  <symbol id="i-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
-</svg>
-
-<!-- NAV -->
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="#top" class="brand">Mostafa <b>Boghdady</b></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
-      <svg class="icon"><use href="#i-menu"/></svg>
-    </button>
-    <nav aria-label="Main">
-      <ul id="menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <p class="status"><i></i> Open to Network Security and SOC roles</p>
-        <h1>Mostafa<br>Boghdady</h1>
-        <p class="role">Network Security Engineer</p>
-        <p class="intro">
-          I configure Fortinet and Sophos next-generation firewalls, Cisco switching, VLAN segmentation and site-to-site IPsec VPN.
-          I led APEX, a security automation platform built around a Sophos XGS firewall.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="Assets/Profile_Photo/CV_Mostafa_Boghdady.pdf" download>
-            <svg class="icon"><use href="#i-download"/></svg> Download CV
-          </a>
-          <a class="btn" href="Assets/Profile/Mostafa_Boghdady.vcf">
-            <svg class="icon"><use href="#i-useradd"/></svg> Save contact
-          </a>
-        </div>
-        <div class="social">
-          <a href="https://wa.me/201013421811" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg> WhatsApp</a>
-          <a href="mailto:mostafa10020038@gmail.com"><svg class="icon"><use href="#i-mail"/></svg> Email</a>
-          <a href="https://www.linkedin.com/in/mostafa-boghdady-62334a238/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-in"/></svg> LinkedIn</a>
-          <a href="https://tryhackme.com/p/MBoghdady" target="_blank" rel="noopener"><svg class="icon"><use href="#i-shield"/></svg> TryHackMe</a>
-        </div>
-      </div>
-      <div class="hero-photo">
-        <div class="photo-frame">
-          <img src="Assets/Profile_Photo/Mostafa_Photo.jpeg" alt="Portrait of Mostafa Boghdady">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap about-grid">
-      <div>
-        <h2 class="title">About</h2>
-        <p>
-          I am a Network Security Engineer with hands-on experience configuring Fortinet and Sophos next-generation firewalls,
-          Cisco switching, VLAN-based network segmentation and site-to-site IPsec VPN across enterprise environments.
-        </p>
-        <p>
-          I focus on perimeter security, least-privilege access control and SIEM-based network monitoring,
-          on top of a solid foundation in TCP/IP, routing and switching. My Applied Cybersecurity Diploma covered network security,
-          penetration testing, digital forensics and incident response, and governance, risk and compliance.
-        </p>
-      </div>
-      <dl class="facts">
-        <div><dt>Based in</dt><dd>Tenth of Ramadan City, Egypt</dd></div>
-        <div><dt>Education</dt><dd>B.Sc. Computer Science, Higher Technological Institute</dd></div>
-        <div><dt>Specialisation</dt><dd>Applied Cybersecurity Diploma, DiGiLiANS Batch 1, Egyptian Military Academy</dd></div>
-        <div><dt>Languages</dt><dd>Arabic (native), English (very good)</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <h2 class="title">Experience and training</h2>
-      <p class="lead">Most recent first.</p>
-
-      <ol class="timeline">
-        <li class="tl-item">
-          <div class="tl-date">September 2026</div>
-          <h3>Network Security Engineer Intern</h3>
-          <div class="tl-org">Etisal International &amp; IDS</div>
-          <ul>
-            <li>Configured enterprise network infrastructure from scratch on Cisco core and access switches: VLAN segmentation, inter-VLAN routing, trunking, STP and port security.</li>
-            <li>Configured FortiGate firewall policies and NAT, and established site-to-site IPsec VPN connectivity between sites.</li>
-            <li>Monitored network traffic and supported the team during the Splunk and Active Directory deployment.</li>
-          </ul>
-        </li>
-        <li class="tl-item">
-          <div class="tl-date">2025 – 2026</div>
-          <h3>Applied Cybersecurity Diploma</h3>
-          <div class="tl-org">DiGiLiANS Batch 1, Egyptian Military Academy</div>
-          <p>Specialized 9-month diploma: penetration testing, networking, network security, digital forensics and incident response, and GRC.</p>
-        </li>
-        <li class="tl-item">
-          <div class="tl-date">Nov 2024 – Apr 2025</div>
-          <h3>IT Engineer</h3>
-          <div class="tl-org">Click Solutions</div>
-          <ul>
-            <li>Designed and deployed network infrastructure, including routers, switches, VLANs and firewall configurations.</li>
-            <li>Implemented access control policies and network security hardening, applying least-privilege principles to reduce exposure to risk.</li>
-            <li>Monitored network logs and investigated connectivity and security incidents, reducing downtime and improving availability.</li>
-            <li>Configured hardware, operating systems and enterprise applications, and supported Windows and Linux users.</li>
-          </ul>
-        </li>
-        <li class="tl-item">
-          <div class="tl-date">2020 – 2024</div>
-          <h3>B.Sc. in Computer Science</h3>
-          <div class="tl-org">Higher Technological Institute</div>
-          <p>Grade: Good. Graduation project: Excellent.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="wrap">
-      <h2 class="title">Projects</h2>
-      <p class="lead">Projects where I was the team leader.</p>
-
-      <article class="project">
-        <h3>APEX: Automated Protection &amp; Execution</h3>
-        <p class="sub">Team Leader, Diploma Graduation Project</p>
-        <p>
-          APEX is a SOC automation platform that connects detection, decision and response in one pipeline.
-          It runs as a 10-VM VMware lab, with AI components for reporting and endpoint detection.
-          I led the team and owned the network architecture decisions, team coordination, delivery and technical documentation.
-        </p>
-        <a class="btn demo-btn" href="https://drive.google.com/file/d/17b6RprZwr5NY8pBq4eaHbaq6mndFjJdp/view?usp=sharing" target="_blank" rel="noopener">
-          <svg class="icon"><use href="#i-play"/></svg> Watch the APEX demo
-        </a>
-
-        <p class="flow-cap" style="margin-top:1.4rem">The whole platform: from alert to response</p>
-        <ol class="flow">
-          <li><strong>Collect</strong><span>Endpoint, Active Directory and firewall logs are sent to Wazuh.</span></li>
-          <li><strong>Detect</strong><span>Wazuh SIEM raises an alert when it sees suspicious activity.</span></li>
-          <li><strong>Decide</strong><span>Shuffle SOAR playbooks and n8n workflows enrich and triage the alert.</span></li>
-          <li><strong>Respond</strong><span>The Sophos firewall blocks the source or redirects the attacker to the honeypot.</span></li>
-        </ol>
-
-        <p class="flow-cap" style="margin-top:1.4rem">My focus: the Sophos XGS firewall at the core of the architecture</p>
-        <ol class="flow">
-          <li><strong>Segment</strong><span>Dedicated zones: LAN, Internal Servers, DMZ, SOC, Honeypot and WAN.</span></li>
-          <li><strong>Control</strong><span>Least-privilege firewall rules, ACLs and NAT policies between zones.</span></li>
-          <li><strong>Inspect</strong><span>IPS, web filtering and application control block malicious traffic at the perimeter.</span></li>
-          <li><strong>Monitor</strong><span>Syslog feeds a Wazuh SIEM for centralized detection of threats and policy violations.</span></li>
-        </ol>
-
-        <ul class="plist">
-          <li>Deployed and hardened the Sophos XGS firewall and enforced segmentation across all security zones.</li>
-          <li>Built the Windows infrastructure services (Active Directory, DNS, DHCP) with Group Policy and endpoint agent deployment, hosting the domain controller in a dedicated internal servers zone.</li>
-        </ul>
-
-        <div class="chips">
-          <span class="chip">Sophos XGS</span><span class="chip">Network segmentation</span><span class="chip">IPS</span>
-          <span class="chip">ACLs and NAT</span><span class="chip">Wazuh SIEM</span><span class="chip">Shuffle SOAR</span>
-          <span class="chip">n8n</span><span class="chip">Honeypot</span><span class="chip">VMware</span>
-          <span class="chip">Active Directory, DNS, DHCP</span><span class="chip">Group Policy</span>
-        </div>
-      </article>
-
-      <article class="project">
-        <h3>Security Awareness Platform</h3>
-        <p class="sub">Team Leader</p>
-        <p>
-          A platform built to raise security awareness. I led the team and was responsible for building the platform
-          and for its ideas.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <h2 class="title">Skills</h2>
-      <p class="lead">Tools and methods I use in labs and on the job.</p>
-
-      <div class="skill-groups">
-        <div>
-          <h3>Network security</h3>
-          <div class="chips">
-            <span class="chip">FortiGate (FortiOS)</span><span class="chip">Sophos XGS</span>
-            <span class="chip">Site-to-site IPsec VPN</span><span class="chip">Perimeter security</span>
-            <span class="chip">Firewall policies</span><span class="chip">ACLs and NAT</span>
-            <span class="chip">IPS</span><span class="chip">Web filtering</span>
-            <span class="chip">Application control</span><span class="chip">Network segmentation</span>
-          </div>
-        </div>
-        <div>
-          <h3>Networking</h3>
-          <div class="chips">
-            <span class="chip">TCP/IP, DNS, DHCP</span><span class="chip">VLANs</span>
-            <span class="chip">Inter-VLAN routing</span><span class="chip">Trunking</span>
-            <span class="chip">STP</span><span class="chip">Port security</span>
-            <span class="chip">Cisco switching (CCNA level)</span>
-          </div>
-        </div>
-        <div>
-          <h3>Monitoring and analysis</h3>
-          <div class="chips">
-            <span class="chip">Wireshark</span><span class="chip">Nmap</span>
-            <span class="chip">Wazuh (SIEM)</span><span class="chip">Splunk</span>
-            <span class="chip">Syslog</span><span class="chip">Log analysis</span>
-          </div>
-        </div>
-        <div>
-          <h3>Systems</h3>
-          <div class="chips">
-            <span class="chip">Windows administration</span><span class="chip">Linux administration</span>
-            <span class="chip">Active Directory</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATES -->
-  <section id="certificates">
-    <div class="wrap">
-      <h2 class="title">Certificates</h2>
-      <p class="lead">Tap any certificate to view it full size.</p>
-
-      <h3 class="subhead">Network security</h3>
-      <div class="certs">
-        <button class="cert contain" type="button" data-src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" data-title="FortiOS 7.6 Administrator">
-          <img loading="lazy" src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" alt="Certificate: FortiOS 7.6 Administrator, Fortinet">
-          <span class="meta"><span class="name">FortiOS 7.6 Administrator</span><span class="by">Fortinet, 2026</span></span>
-        </button>
-      </div>
-      <div class="chips" style="margin-top:1.1rem">
-        <span class="chip">CCNA (2025)</span>
-        <span class="chip">HCIA Data Communication, Huawei (in progress)</span>
-        <span class="chip">System Administrator, Red Hat Linux (2022)</span>
-      </div>
-
-      <h3 class="subhead">Google Cybersecurity Professional Certificate</h3>
-      <div class="certs">
-        <button class="cert featured" type="button" data-src="Assets/Cretificates/Cert1.png" data-title="Google Cybersecurity Professional Certificate">
-          <img src="Assets/Cretificates/Cert1.png" alt="Google Cybersecurity Professional Certificate">
-          <span class="meta">
-            <span class="name">Google Cybersecurity Professional Certificate</span>
-            <span class="by">Google, via Coursera. 19 Apr 2026</span>
-            <span class="desc">Nine courses covering security fundamentals, networks, Linux and SQL, assets and threats, detection and response, and Python automation.</span>
-          </span>
-        </button>
-      </div>
-
-      <div class="slider-head">
-        <p class="slider-title">The 9 courses. Swipe or use the arrows.</p>
-        <div class="slider-btns">
-          <button class="icon-btn" type="button" id="sliderPrev" aria-label="Scroll courses left"><svg class="icon"><use href="#i-left"/></svg></button>
-          <button class="icon-btn" type="button" id="sliderNext" aria-label="Scroll courses right"><svg class="icon"><use href="#i-right"/></svg></button>
-        </div>
-      </div>
-      <div class="slider" id="slider" tabindex="0" aria-label="Google course certificates">
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert4.png" data-title="Foundations of Cybersecurity">
-            <img loading="lazy" src="Assets/Cretificates/Cert4.png" alt="Certificate: Foundations of Cybersecurity">
-            <span class="meta"><span class="name">Foundations of Cybersecurity</span><span class="by">Google, 13 Jan 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert7.png" data-title="Play It Safe: Manage Security Risks">
-            <img loading="lazy" src="Assets/Cretificates/Cert7.png" alt="Certificate: Play It Safe: Manage Security Risks">
-            <span class="meta"><span class="name">Play It Safe: Manage Security Risks</span><span class="by">Google, 18 Jan 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert8.png" data-title="Connect and Protect: Networks and Network Security">
-            <img loading="lazy" src="Assets/Cretificates/Cert8.png" alt="Certificate: Connect and Protect: Networks and Network Security">
-            <span class="meta"><span class="name">Connect and Protect: Networks and Network Security</span><span class="by">Google, 3 Feb 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert3.png" data-title="Tools of the Trade: Linux and SQL">
-            <img loading="lazy" src="Assets/Cretificates/Cert3.png" alt="Certificate: Tools of the Trade: Linux and SQL">
-            <span class="meta"><span class="name">Tools of the Trade: Linux and SQL</span><span class="by">Google, 21 Feb 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert6.png" data-title="Assets, Threats, and Vulnerabilities">
-            <img loading="lazy" src="Assets/Cretificates/Cert6.png" alt="Certificate: Assets, Threats, and Vulnerabilities">
-            <span class="meta"><span class="name">Assets, Threats, and Vulnerabilities</span><span class="by">Google, 7 Mar 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert5.png" data-title="Sound the Alarm: Detection and Response">
-            <img loading="lazy" src="Assets/Cretificates/Cert5.png" alt="Certificate: Sound the Alarm: Detection and Response">
-            <span class="meta"><span class="name">Sound the Alarm: Detection and Response</span><span class="by">Google, 17 Mar 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert2.png" data-title="Automate Cybersecurity Tasks with Python">
-            <img loading="lazy" src="Assets/Cretificates/Cert2.png" alt="Certificate: Automate Cybersecurity Tasks with Python">
-            <span class="meta"><span class="name">Automate Cybersecurity Tasks with Python</span><span class="by">Google, 6 Apr 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert10.png" data-title="Put It to Work: Prepare for Cybersecurity Jobs">
-            <img loading="lazy" src="Assets/Cretificates/Cert10.png" alt="Certificate: Put It to Work: Prepare for Cybersecurity Jobs">
-            <span class="meta"><span class="name">Put It to Work: Prepare for Cybersecurity Jobs</span><span class="by">Google, 18 Apr 2026</span></span>
-          </button>
-          <button class="cert" type="button" data-src="Assets/Cretificates/Cert11.png" data-title="Accelerate Your Job Search with AI">
-            <img loading="lazy" src="Assets/Cretificates/Cert11.png" alt="Certificate: Accelerate Your Job Search with AI">
-            <span class="meta"><span class="name">Accelerate Your Job Search with AI</span><span class="by">Google, 18 Apr 2026</span></span>
-          </button>
-      </div>
-
-      <h3 class="subhead">Other courses</h3>
-      <div class="certs">
-        <button class="cert" type="button" data-src="Assets/Cretificates/Cert9.png" data-title="Delivering Quality Work with Agility">
-            <img loading="lazy" src="Assets/Cretificates/Cert9.png" alt="Certificate: Delivering Quality Work with Agility">
-            <span class="meta"><span class="name">Delivering Quality Work with Agility</span><span class="by">IBM, 13 Jan 2026</span></span>
-          </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- VOLUNTEERING -->
-  <section id="volunteering">
-    <div class="wrap">
-      <h2 class="title">Leadership and volunteering</h2>
-      <p class="lead">Student roles where I led teams and organised events.</p>
-      <ul class="vol">
-        <li><span>Vice President, Student Union</span><span>2024</span></li>
-        <li><span>Head of Computer Science Student Union</span><span>2022 – 2024</span></li>
-        <li><span>Head of Social and Trips Committee</span><span>2022</span></li>
-        <li><span>Member, IEEE Student Team</span><span></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <h2 class="title">Contact</h2>
-      <p class="lead">The fastest way to reach me is WhatsApp or email.</p>
-
-      <div class="contact-list">
-        <a class="contact-row" href="https://wa.me/201013421811" target="_blank" rel="noopener">
-          <svg class="icon"><use href="#i-chat"/></svg>
-          <span><b>WhatsApp</b><small>+20 101 342 1811</small></span>
-        </a>
-        <a class="contact-row" href="tel:+201013421811">
-          <svg class="icon"><use href="#i-phone"/></svg>
-          <span><b>Call</b><small>+20 101 342 1811</small></span>
-        </a>
-        <a class="contact-row" href="mailto:mostafa10020038@gmail.com">
-          <svg class="icon"><use href="#i-mail"/></svg>
-          <span><b>Email</b><small>mostafa10020038@gmail.com</small></span>
-        </a>
-        <a class="contact-row" href="https://www.linkedin.com/in/mostafa-boghdady-62334a238/" target="_blank" rel="noopener">
-          <svg class="icon"><use href="#i-in"/></svg>
-          <span><b>LinkedIn</b><small>Mostafa Boghdady</small></span>
-        </a>
-        <a class="contact-row" href="https://tryhackme.com/p/MBoghdady" target="_blank" rel="noopener">
-          <svg class="icon"><use href="#i-shield"/></svg>
-          <span><b>TryHackMe</b><small>MBoghdady</small></span>
-        </a>
-      </div>
-
-      <a class="btn" href="Assets/Profile/Mostafa_Boghdady.vcf">
-        <svg class="icon"><use href="#i-useradd"/></svg> Save contact to phone
-      </a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">© 2026 Mostafa Mohammed Boghdady</div>
-</footer>
-
-<!-- Mobile quick actions -->
-<nav class="quickbar" aria-label="Quick contact">
-  <a href="https://wa.me/201013421811" target="_blank" rel="noopener"><svg class="icon"><use href="#i-chat"/></svg>WhatsApp</a>
-  <a href="tel:+201013421811"><svg class="icon"><use href="#i-phone"/></svg>Call</a>
-  <a href="mailto:mostafa10020038@gmail.com"><svg class="icon"><use href="#i-mail"/></svg>Email</a>
-  <a href="Assets/Profile/Mostafa_Boghdady.vcf"><svg class="icon"><use href="#i-useradd"/></svg>Save</a>
-</nav>
-
-<!-- Certificate viewer -->
-<dialog class="viewer" id="viewer" aria-label="Certificate viewer">
-  <div class="viewer-bar">
-    <strong id="viewerTitle"></strong>
-    <button class="icon-btn" type="button" id="viewerClose" aria-label="Close"><svg class="icon"><use href="#i-x"/></svg></button>
-  </div>
-  <div class="viewer-body"><img id="viewerImg" alt=""></div>
-  <div class="viewer-nav">
-    <button class="icon-btn" type="button" id="viewerPrev" aria-label="Previous certificate"><svg class="icon"><use href="#i-left"/></svg></button>
-    <button class="icon-btn" type="button" id="viewerNext" aria-label="Next certificate"><svg class="icon"><use href="#i-right"/></svg></button>
-  </div>
-</dialog>
-
-<script>
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const menu = document.getElementById('menu');
-  function setMenu(open) {
-    menu.classList.toggle('open', open);
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.querySelector('use').setAttribute('href', open ? '#i-x' : '#i-menu');
-  }
-  menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-
-  // Highlight current section in the nav
-  const links = [...menu.querySelectorAll('a')];
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(l => l.classList.remove('active'));
-          const l = map.get(e.target.id);
-          if (l) l.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
-    const heroEl = document.getElementById('hero'); if (heroEl) io.observe(heroEl);
-  }
-
-  // Certificate viewer
-  const viewer = document.getElementById('viewer');
-  const vImg = document.getElementById('viewerImg');
-  const vTitle = document.getElementById('viewerTitle');
-  const certs = [...document.querySelectorAll('.cert')];
-  let current = 0;
-
-  function show(i) {
-    current = (i + certs.length) % certs.length;
-    const c = certs[current];
-    vImg.src = c.dataset.src;
-    vImg.alt = c.dataset.title;
-    vTitle.textContent = c.dataset.title;
-  }
-  certs.forEach((c, i) => c.addEventListener('click', () => {
-    show(i);
-    if (typeof viewer.showModal === 'function') viewer.showModal();
-    else window.open(c.dataset.src, '_blank');
-  }));
-  // Course slider arrows
-  const slider = document.getElementById('slider');
-  const step = () => Math.max(slider.clientWidth * 0.8, 260);
-  document.getElementById('sliderPrev').addEventListener('click', () => slider.scrollBy({ left: -step(), behavior: 'smooth' }));
-  document.getElementById('sliderNext').addEventListener('click', () => slider.scrollBy({ left: step(), behavior: 'smooth' }));
-
-  document.getElementById('viewerClose').addEventListener('click', () => viewer.close());
-  document.getElementById('viewerPrev').addEventListener('click', () => show(current - 1));
-  document.getElementById('viewerNext').addEventListener('click', () => show(current + 1));
-  viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
-  viewer.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
-  });
-</script>
-</body>
-</html>
+  <symbol id="i-menu" viewBox="0 0 24 24"><
