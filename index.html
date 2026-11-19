@@ -213,6 +213,7 @@
     color: inherit; font: inherit; transition: border-color .2s;
   }
   .cert:hover { border-color: var(--accent); }
+  .cert.contain img { object-fit: contain; object-position: center; }
   .cert img { width: 100%; height: auto; aspect-ratio: 1000 / 770; object-fit: cover; object-position: top left; background: #fff; }
   .cert .meta { padding: 0.8rem 1rem 1rem; }
   .cert .name { display: block; font-weight: 600; line-height: 1.35; font-size: 1rem; }
@@ -564,7 +565,6 @@
       <div class="also">
         <h3>Networking and systems</h3>
         <div class="chips">
-          <span class="chip">FortiOS 7.6 Administrator, Fortinet (2026)</span>
           <span class="chip">CCNA (2025)</span>
           <span class="chip">HCIA Data Communication, Huawei (in progress)</span>
           <span class="chip">System Administrator, Red Hat Linux (2022)</span>
@@ -583,6 +583,10 @@
           </span>
         </button>
 
+        <button class="cert contain" type="button" data-src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" data-title="FortiOS 7.6 Administrator">
+          <img loading="lazy" src="Assets/Cretificates/Screenshot%202026-11-19%20143110.png" alt="Certificate: FortiOS 7.6 Administrator, Fortinet">
+          <span class="meta"><span class="name">FortiOS 7.6 Administrator</span><span class="by">Fortinet, 2026</span></span>
+        </button>
         <button class="cert" type="button" data-src="Assets/Cretificates/Cert11.png" data-title="Accelerate Your Job Search with AI">
           <img loading="lazy" src="Assets/Cretificates/Cert11.png" alt="Certificate: Accelerate Your Job Search with AI" width="1000" height="770">
           <span class="meta"><span class="name">Accelerate Your Job Search with AI</span><span class="by">Google, 18 Apr 2026</span></span>
